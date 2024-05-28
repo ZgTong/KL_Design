@@ -1,9 +1,15 @@
 import { Slice, createSlice } from "@reduxjs/toolkit";
 export interface AppState {
     showHeader: boolean;
+    backgroundImageMobile: string;
+    backgroundImageDesktop: string;
+    backgroundColor: string;
 }
 export const initialAppState: AppState = {
     showHeader: true,
+    backgroundImageMobile: "url('/images/bg/mobile_home.png'), linear-gradient(161deg, #0C0C0C 31.65%, #323232 134.46%)",
+    backgroundImageDesktop: "url('/images/bg/desktop_home.png'), linear-gradient(161deg, #0C0C0C 31.65%, #323232 134.46%)",
+    backgroundColor: "",
 };
 export const appSlice: Slice = createSlice({
     name: "app",
@@ -11,8 +17,17 @@ export const appSlice: Slice = createSlice({
     reducers: {
         setShowHeader: (state, action) => {
             state.showHeader = action.payload;
+        },
+        setBackgroundImageMobile: (state, action) => {
+            state.backgroundImageMobile = action.payload;
+        },
+        setBackgroundImageDesktop: (state, action) => {
+            state.backgroundImageDesktop = action.payload;
+        },
+        setBackgroundColor: (state, action) => {
+            state.backgroundColor = action.payload;
         }
     },
 });
-export const { setShowHeader } = appSlice.actions;
+export const { setShowHeader, setBackgroundImage, setBackgroundImageDeskto, setBackgroundColor } = appSlice.actions;
 export default appSlice.reducer;

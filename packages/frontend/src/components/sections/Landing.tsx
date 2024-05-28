@@ -50,15 +50,16 @@ const Landing: FC = memo(() => {
                     sx={{
                         width: '100%',
                         height: 'auto',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        padding: {
+                            xs: '80px 0 15px',
+                            lg: '0 20%',
+                        },                    
                     }}
                 >
-                    <Box
-                        sx={{
-                            height: '100%',
-                        }}
-                    >
-                        <BrandLogo />
-                    </Box>
+                    <BrandLogo />
                 </Box>
                 <Box
                     sx={{
@@ -70,11 +71,11 @@ const Landing: FC = memo(() => {
                         justifyContent: 'space-between',
                         width: '100%',
                         padding: {
-                            xs: '0',
+                            xs: '0 0 30px',
                             lg: '100px 20% 0',
                         },
                         gap: {
-                            xs: '16px',
+                            xs: '12px',
                             lg: '0',
                         },
                     }}

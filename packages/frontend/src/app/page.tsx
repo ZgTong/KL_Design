@@ -2,6 +2,7 @@
 import { FC, memo } from 'react';
 import { Box, ThemeProvider } from '@mui/material';
 import theme from '@root/theme';
+import BackgroundSetter from '@components/widgets/BackgroundSetter';
 import Landing from '@components/sections/Landing';
 import About from '@components/sections/About';
 import SelectedWorks from '@components/sections/SelectedWorks';
@@ -13,6 +14,7 @@ const Home: FC = memo(() => {
     const KL_theme = theme();
     return (
         <ThemeProvider theme={KL_theme}>
+            <BackgroundSetter />
             <Box
                 sx={{
                     display: 'flex',

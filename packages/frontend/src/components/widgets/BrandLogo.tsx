@@ -8,7 +8,16 @@ const BrandLogo = () => {
     return (
         <>
             {lessThanLg ? (
-                <img src={`/images/landing_brand.gif`} alt='' />
+                <Box sx={{
+                    width: '198px',
+                
+                }}>
+                    <img src={`/images/landing_brand.gif`} style={{
+                        width: '100%',
+                        height: 'auto',
+                        objectFit: 'contain',
+                    }} />
+                </Box>
             ) : (
                 <Box
                     sx={{
@@ -69,7 +78,9 @@ const BrandLogo = () => {
                                 },
                             }}
                         >
-                            KL<br />Design
+                            KL
+                            <br />
+                            Design
                         </Typography>
                     </Box>
                 </Box>
