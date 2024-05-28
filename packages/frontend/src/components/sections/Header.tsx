@@ -315,7 +315,7 @@ const Header: FC = memo(() => {
                                                     'color 0.3s ease-in-out',
                                             },
                                         }}
-                                        href={`/${item.route}`}                            
+                                        href={`${item.route}`}                            
                                     >
                                         {item.text}
                                     </Link>
