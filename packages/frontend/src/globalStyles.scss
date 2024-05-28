@@ -1,0 +1,78 @@
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  .h-screen {
+    height: stretch;
+  }
+}
+
+/* Global Styles */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+  min-height: 100vh;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  white-space: pre-wrap;
+}
+
+body {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 0;
+  padding-top: 106px;
+  margin: 0;
+  color: #222;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: var(--font-dm-sans);
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-image: url('/images/bg/mobile_home.png'), linear-gradient(161deg, #0C0C0C 31.65%, #323232 134.46%);
+  background-position: top left;
+  overflow-x: hidden;
+}
+
+td,
+th {
+  padding: 4px 8px 4px 4px;
+  text-align: left;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+th {
+  font-weight: 600;
+}
+
+// add media query for desktop
+@media screen and (width >= 1024px) {
+  body {
+    font-size: 16px;
+    padding-top: 130px;
+    background-image: url('/images/bg/desktop_home.png'), linear-gradient(161deg, #0C0C0C 31.65%, #323232 134.46%);
+  }
+}
