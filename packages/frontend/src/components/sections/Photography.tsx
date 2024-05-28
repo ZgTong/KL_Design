@@ -155,12 +155,6 @@ const Photography: FC<{
                                     transition:
                                         'color,borderColor 0.3s ease-in-out',
                                 },
-                                '&:active': {
-                                    borderColor: 'secondary.main',
-                                    color: 'secondary.main',
-                                    transition:
-                                        'color,borderColor 0.3s ease-in-out',
-                                },
                             }}
                             href='/photography'
                         >

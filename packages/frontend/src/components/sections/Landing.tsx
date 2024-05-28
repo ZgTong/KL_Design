@@ -4,15 +4,11 @@ import {
     Link,
     Box,
     Slide,
-    useTheme,
-    useMediaQuery,
 } from '@mui/material';
 import { LandingMenuData } from '@data/siteData';
 import BrandLogo from '@components/widgets/BrandLogo';
 
 const Landing: FC = memo(() => {
-    const theme = useTheme();
-    const lessThanLg = useMediaQuery(theme.breakpoints.down('lg'));
     const [slideChecked, setSlideChecked] = useState([
         false,
         false,
@@ -108,11 +104,6 @@ const Landing: FC = memo(() => {
                                                     'color 0.3s ease-in-out',
                                             },
                                             '&:focus': {
-                                                color: 'secondary.main',
-                                                transition:
-                                                    'color 0.3s ease-in-out',
-                                            },
-                                            '&:active': {
                                                 color: 'secondary.main',
                                                 transition:
                                                     'color 0.3s ease-in-out',

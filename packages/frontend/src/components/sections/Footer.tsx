@@ -58,10 +58,6 @@ const Footer: FC<{
                                 color: 'secondary.main',
                                 transition: 'color 0.3s ease-in-out',
                             },
-                            '&:active': {
-                                color: 'secondary.main',
-                                transition: 'color 0.3s ease-in-out',
-                            },
                         }}
                     >
                         KL Design
@@ -122,11 +118,6 @@ const Footer: FC<{
                                                 'color 0.3s ease-in-out',
                                         },
                                         '&:focus': {
-                                            color: 'secondary.main',
-                                            transition:
-                                                'color 0.3s ease-in-out',
-                                        },
-                                        '&:active': {
                                             color: 'secondary.main',
                                             transition:
                                                 'color 0.3s ease-in-out',
