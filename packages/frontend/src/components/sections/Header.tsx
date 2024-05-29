@@ -98,7 +98,7 @@ const Header: FC = memo(() => {
         []
     );
     const intersectionHandler = useCallback((section: SectionId | null) => {
-        console.log("section", section);
+        // console.log("section", section);
         section && setCurrentSection(section);
     }, []);
     useNavObserver(

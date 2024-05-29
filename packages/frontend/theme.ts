@@ -29,7 +29,8 @@ const theme = () => {
                 main: "#EEE5D8"
             },
             warning: {
-                main: "#141414"
+                main: "#141414",
+                dark: "#424242"
             },
         }
     });

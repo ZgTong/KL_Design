@@ -1,19 +1,18 @@
 'use client';
 import { FC, memo, useEffect } from 'react';
-import { Box, Typography, useMediaQuery, Link } from '@mui/material';
+import { useRouter } from 'next/navigation';
+import { Box, Typography, Link } from '@mui/material';
 import { useAppDispatch } from '@lib/hooks';
-import BackgroundSetter from '@components/widgets/BackgroundSetter';
 import { PhotographyPageData } from '@data/siteData';
 import theme from '@root/theme';
 
 const Home: FC = memo(() => {
     const dispatch = useAppDispatch();
     const KL_theme = theme(); // Rename the variable 'theme' to 'KL_theme'
-    const lessThanLg = useMediaQuery(KL_theme.breakpoints.down('lg')); // Use the renamed variable 'muiTheme' instead of 'theme'
 
     useEffect(() => {
         const background =
-            'linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 15%)';
+            'linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100px)';
         dispatch({ type: 'app/setBackgroundImageMobile', payload: background });
         dispatch({
             type: 'app/setBackgroundImageDesktop',
@@ -40,9 +39,7 @@ const Home: FC = memo(() => {
                     lg: '0',
                 },
             }}
-            id='photography'
         >
-            <BackgroundSetter />
             <Box
                 sx={{
                     width: '100%',
@@ -82,23 +79,27 @@ const Home: FC = memo(() => {
                         Photography
                     </Typography>
                 </Box>
-                <Box sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: {
-                        xs: '24px',
-                        lg: '64px',
-                    },
-                    padding: {
-                        xs: '32px 0 64px',
-                        lg: '64px 0 104px',
-                    },
-                }}>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: {
+                            xs: '24px',
+                            lg: '64px',
+                        },
+                        padding: {
+                            xs: '32px 0 64px',
+                            lg: '64px 0 104px',
+                        },
+                    }}
+                >
                     {PhotographyPageData.map((data, index) => (
                         <PhotographyCard
+                            key={data.id}
                             title={data.title}
                             img={data.entryImg}
-                            href={data.href}
+                            href={`${data.href}`}
+                            idx={data.id}
                         />
                     ))}
                 </Box>
@@ -111,18 +112,33 @@ const PhotographyCard: FC<{
     img: string;
     title: string;
     href: string;
-}> = memo(({ img, title, href }) => {
-    const KL_theme = theme(); // Rename the variable 'theme' to 'KL_theme'
+    idx: number;
+}> = memo(({ img, title, href, idx }) => {
+    const KL_theme = theme(); 
+    const dispatch = useAppDispatch();
+    const router = useRouter();
+    const handleClick = () => {
+        dispatch({ type: 'app/setPhotographyIndex', payload: idx });
+        // route to href
+        router.push(href);
+    };
     return (
         <Box
             sx={{
                 width: '100%',
                 height: 'auto',
                 textAlign: 'center',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: {
+                    xs: '16px',
+                    lg: '24px',
+                },
             }}
         >
             <Link
-                href={href}
+                // href={href}
+                onClick={handleClick}
                 underline='none'
                 color={KL_theme.palette.primary.dark}
             >
@@ -141,7 +157,8 @@ const PhotographyCard: FC<{
                 </Typography>
             </Link>
             <Link
-                href={href}
+                // href={href}
+                onClick={handleClick}
                 underline='none'
                 sx={{
                     borderRadius: {

@@ -11,7 +11,7 @@ const BackgroundSetter = () => {
     document.body.style.setProperty('--background-image-desktop', backgroundImageDesktop);
   }, [backgroundImageDesktop]);
   useEffect(() => {
-    console.log("setting background color", backgroundColor)
+    // console.log("setting background color", backgroundColor)
     document.body.style.setProperty('--background-color', backgroundColor);
   }, [backgroundColor]);
   return null;
