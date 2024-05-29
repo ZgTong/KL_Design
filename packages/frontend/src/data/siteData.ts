@@ -164,17 +164,17 @@ const PhotographyPageData = [
     {
         id: 1,
         title: 'Commisioned',
-        entryImg: '',
+        entryImg: '/images/photography/commissioned_entry.png',
         name: 'commissioned',
-        href: 'commissioned',
+        href: '/photography/commissioned',
         collection: [],
     },
     {
         id: 2,
         title: 'Lifestyle',
-        entryImg: '',
+        entryImg: '/images/photography/lifestyle_entry.png',
         name: 'lifestyle',
-        href: 'lifestyle',
+        href: '/photography/lifestyle',
         collection: [],
     },
 ];

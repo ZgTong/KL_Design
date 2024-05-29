@@ -6,6 +6,10 @@ export default function PhotographyLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <Box>{children}</Box>
+        <Box sx={{
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection: 'column',
+        }}>{children}</Box>
     );
 }
