@@ -1,14 +1,31 @@
 'use client';
-import { FC, memo } from 'react';
-import { Box, Typography, ImageList, ImageListItem } from '@mui/material';
+import { FC, memo, useState, MouseEvent } from 'react';
+import {
+    Box,
+    Typography,
+    ImageList,
+    ImageListItem,
+    Backdrop,
+} from '@mui/material';
 import { PhotographyPageData } from '@data/siteData';
 import { useAppSelector } from '@lib/hooks';
 import theme from '@root/theme';
 
 const Page: FC = memo(() => {
+    const [open, setOpen] = useState(false);
+    const [curChildPhoto, setCurChildPhoto] = useState('');
     const curPhotoIndex = useAppSelector((state) => state.app.photographyIndex);
     const data = PhotographyPageData[curPhotoIndex];
     const KL_theme = theme();
+    const handleOpen = (e: MouseEvent) => {
+        const target = e.target as HTMLImageElement;
+        setCurChildPhoto(target.src);
+        setOpen(true);
+    };
+    const handleClose = () => {
+        // setCurChildPhoto('');
+        setOpen(false);
+    };
     return (
         <Box
             sx={{
@@ -65,19 +82,22 @@ const Page: FC = memo(() => {
                     </Typography>
                 </Box>
             </Box>
-            <Box sx={{
-                width: '100%',
-                padding: {
-                    xs: '0 28px 0px',
-                    lg: '0 70px 0px',
-                },
-            }}>
+            <Box
+                sx={{
+                    width: '100%',
+                    padding: {
+                        xs: '0 28px 0px',
+                        lg: '0 70px 0px',
+                    },
+                }}
+            >
                 <ImageList cols={2} gap={4} variant='quilted'>
                     {data.collection.map((item, index) => (
                         <ImageListItem
                             key={item.id}
                             cols={item.cols}
                             rows={item.rows}
+                            onClick={handleOpen}
                         >
                             <img
                                 src={item.url}
@@ -89,6 +109,23 @@ const Page: FC = memo(() => {
                         </ImageListItem>
                     ))}
                 </ImageList>
+                <Backdrop
+                    open={open}
+                    onClick={handleClose}
+                    sx={{
+                        backgroundColor: '#000',
+                        zIndex: (theme) => theme.zIndex.drawer + 1,
+                    }}
+                >
+                    <img
+                        src={curChildPhoto}
+                        style={{
+                            objectFit: 'contain',
+                            width: '100%',
+                            height: '100%',
+                        }}
+                    />
+                </Backdrop>
             </Box>
         </Box>
     );
