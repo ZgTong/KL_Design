@@ -1,15 +1,16 @@
 import { FC, memo } from 'react';
-import { Typography, Link, Button, Box, List, ListItem, SvgIcon, useMediaQuery, useTheme } from '@mui/material';
+import { Typography, Link, Button, Box, List, ListItem, SvgIcon, useMediaQuery } from '@mui/material';
 import { ContactData } from '@data/siteData';
 import Light from '@components/widgets/Light';
 import CopyToClipboardButton from '@components/widgets/CopyToClipboardButton';
 import CustomeSvgIcon from '@components/widgets/CustomeSvgIcon';
+import theme from '@root/theme';
 
 const Contact: FC<{
     hrefId?: string;
 }> = memo(({hrefId}) => {
-    const theme = useTheme();
-    const lessThanLg = useMediaQuery(theme.breakpoints.down("lg"));
+    const KL_theme = theme();
+    const lessThanLg = useMediaQuery(KL_theme.breakpoints.down("lg"));
     const arrowSvg = (
         <svg
             xmlns='http://www.w3.org/2000/svg'

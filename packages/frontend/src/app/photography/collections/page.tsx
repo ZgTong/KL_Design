@@ -23,7 +23,6 @@ const Page: FC = memo(() => {
         setOpen(true);
     };
     const handleClose = () => {
-        // setCurChildPhoto('');
         setOpen(false);
     };
     return (
@@ -39,6 +38,10 @@ const Page: FC = memo(() => {
                 paddingBottom: {
                     xs: '64px',
                     lg: '104px',
+                },
+                marginTop: {
+                    xs: '0',
+                    lg: '-110px',
                 },
             }}
         >

@@ -8,6 +8,7 @@ import LinkedinDefaultSvg from '@root/public/images/contact/linkedin_default.svg
 import LinkedinCircleSvg from '@root/public/images/contact/linkedin_circle.svg';
 import InstagramDefaultSvg from '@root/public/images/contact/ig_default.svg';
 import InstagramCircleSvg from '@root/public/images/contact/ig_circle.svg';
+import { title } from 'process';
 const HearderMenuData = [
     {
         id: 1,
@@ -64,28 +65,82 @@ const SelectedWorksData = [
         title: 'Promotion Poster Series',
         desc: 'Design / Photography',
         name: 'design',
-        entryImg: '',
+        entryImg: {
+            xs: '/images/selected_works/main_1.png',
+            lg: '/images/selected_works/main_lg_1.png',
+        },
+        details: {
+            title: 'Poster Series',
+            desc: 'DASSAI 39',
+            date: 'August 2023',
+            client: 'Shark Fin Keysborough',
+            service: 'Poster Design / Photography',
+            software: 'Lightroom /  Photoshop / Illustrator',
+            brief: 'Continue the monthly promotion series created for Shark Fin, conduct a photoshoot and create a promotion poster for the assigned Japanese whiskey in A5 and A6 size.',
+            processes: [
+                {
+                    title: 'Research',
+                    desc: 'Understand the brand and the product',
+                    img: '/images/selected_works/process_1.png',
+                },
+                {
+                    title: 'Research',
+                    desc: 'Understand the brand and the product',
+                    img: '/images/selected_works/process_1.png',
+                },
+                {
+                    title: 'Research',
+                    desc: 'Understand the brand and the product',
+                    img: '/images/selected_works/process_1.png',
+                },
+                {
+                    title: 'Research',
+                    desc: 'Understand the brand and the product',
+                    img: '/images/selected_works/process_1.png',
+                },
+            ],
+            execution: {
+                title: 'Functional Poster',
+                desc: `The Final image was taken with the Japanese Rising Sun concept in mind, creating a dramatic yet cool visual presentation to the customers.
+                The poster is also functional in B1 size. The promotion poster series for Shark Fin has generated more profit than expected.`,
+                photos: [
+                    {
+                        id: 1,
+                        url: '/images/selected_works/execution_1.png',
+                    },
+                ]
+            }
+        }
     },
     {
         id: 2,
         title: 'Jo & Jim Repsonsive Website',
         desc: 'Website Design',
         name: 'website',
-        entryImg: '',
+        entryImg: {
+            xs: '/images/selected_works/main_2.png',
+            lg: '/images/selected_works/main_lg_2.png',
+        },
     },
     {
         id: 3,
         title: 'MMT Brand Guidelines',
         desc: 'Branding',
         name: 'branding',
-        entryImg: '',
+        entryImg: {
+            xs: '/images/selected_works/main_3.png',
+            lg: '/images/selected_works/main_lg_3.png',
+        },
     },
     {
         id: 4,
         title: 'Jo & Jim Business Cards',
         desc: 'Design',
         name: 'cards',
-        entryImg: '',
+        entryImg: {
+            xs: '/images/selected_works/main_4.png',
+            lg: '/images/selected_works/main_lg_4.png',
+        },
     },
 ];
 

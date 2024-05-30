@@ -12,6 +12,7 @@ const Bar: FC<{
     tabColor?: string;
 }> = memo(
     ({ contentLength, name, tabColor = KL_Theme.palette.warning.dark }) => {
+        // console.log("Bar", name)
         let curIndex: number = 0;
         switch (name) {
             case 'photography':
@@ -29,10 +30,19 @@ const Bar: FC<{
         }
         const dispatch = useAppDispatch();
         const handleNext = () => {
-            dispatch({
-                type: 'app/setPhotographyIndex',
-                payload: curIndex === contentLength - 1 ? 0 : curIndex + 1,
-            });
+            if(name === 'photography'){
+                dispatch({
+                    type: 'app/setPhotographyIndex',
+                    payload: curIndex === contentLength - 1 ? 0 : curIndex + 1,
+                });
+
+            }else if(name === 'selectedWorks'){
+                dispatch({
+                    type: 'app/setSelectedWorksIndex',
+                    payload: curIndex === contentLength - 1 ? 0 : curIndex + 1,
+                });
+
+            }
         };
         return (
             <Box
@@ -63,6 +73,14 @@ const Bar: FC<{
                         startIcon={
                             <SvgIcon
                                 sx={{
+                                    width: {
+                                        xs: '12px',
+                                        lg: '16px',
+                                    },
+                                    height: {
+                                        xs: '12px',
+                                        lg: '16px',
+                                    },
                                     path: {
                                         stroke: tabColor,
                                     },
@@ -81,6 +99,7 @@ const Bar: FC<{
                                 xs: '24px',
                                 lg: '40px',
                             },
+                            boxSizing: 'border-box',
                             textAlign: 'center',
                             color: tabColor,
                             padding: {
@@ -100,7 +119,24 @@ const Bar: FC<{
                     </Button>
                     <Button
                         onClick={handleNext}
-                        endIcon={<SvgIcon children={TabArrowRight()} />}
+                        endIcon={
+                            <SvgIcon
+                                sx={{
+                                    width: {
+                                        xs: '12px',
+                                        lg: '16px',
+                                    },
+                                    height: {
+                                        xs: '12px',
+                                        lg: '16px',
+                                    },
+                                    path: {
+                                        stroke: tabColor,
+                                    },
+                                }}
+                                children={TabArrowRight()}
+                            />
+                        }
                         sx={{
                             textTransform: 'none',
                             fontWeight: 'bold',

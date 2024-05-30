@@ -84,6 +84,7 @@ const SelectedWorks: FC<{
                             title={work.title}
                             description={work.desc}
                             href={work.name}
+                            image={work.entryImg[lessThanLg ? 'xs' : 'lg']}
                         />
                     ))}
                 </Box>
@@ -185,9 +186,7 @@ const Work: FC<{
                             height: 'auto',
                             objectFit: 'cover',
                         }}
-                        src={`/images/selected_works/main${
-                            lessThanLg ? '' : '_lg'
-                        }_${id}.png`}
+                        src={image}
                     />
                 </Link>
             </Box>
