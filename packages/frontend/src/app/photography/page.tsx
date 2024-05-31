@@ -114,7 +114,7 @@ const PhotographyCard: FC<{
     href: string;
     idx: number;
 }> = memo(({ img, title, href, idx }) => {
-    const KL_theme = theme(); 
+    const KL_theme = theme();
     const dispatch = useAppDispatch();
     const router = useRouter();
     const handleClick = () => {

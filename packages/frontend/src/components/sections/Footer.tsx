@@ -1,15 +1,23 @@
 'use client';
-import { FC, memo } from 'react';
-import { Box, Typography, Link, Popover, ThemeProvider } from '@mui/material';
+import { FC, memo, MouseEvent } from 'react';
+import { useRouter } from 'next/navigation';
+import { Box, Typography, Link, ThemeProvider } from '@mui/material';
 import theme from '@root/theme';
 import { HearderMenuData, ContactData } from '@data/siteData';
 import CustomeSvgIcon from '@components/widgets/CustomeSvgIcon';
+import { useAppDispatch } from '@lib/hooks';
 
 const Footer: FC<{
     bgcolor?: string;
     hrefId?: string;
 }> = memo(({ hrefId }) => {
     const KL_theme = theme();
+    const dispatch = useAppDispatch();
+    const router = useRouter();
+    const handleClick = (e: MouseEvent, id: number, route: string) => {
+        if (id == 1) dispatch({ type: 'app/setSelectedWorksIndex', payload: id - 1 });
+        router.push(route);
+    };
     return (
         <ThemeProvider theme={KL_theme}>
             <Box
@@ -97,7 +105,7 @@ const Footer: FC<{
                         {HearderMenuData.map((item, index) => (
                             <Link
                                 key={item.id}
-                                href={`${item.route}`}
+                                onClick={(e) => handleClick(e, item.id, item.route)}
                                 sx={{
                                     textDecoration: 'none',
                                 }}

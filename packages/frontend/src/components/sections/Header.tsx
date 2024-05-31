@@ -1,5 +1,6 @@
 'use client';
-import { FC, memo, useMemo, useState, useCallback, useEffect } from 'react';
+import { FC, memo, useMemo, useState, useCallback, MouseEvent } from 'react';
+import { useRouter } from 'next/navigation';
 import { useAppDispatch, useAppSelector } from '@lib/hooks';
 import {
     ThemeProvider,
@@ -25,7 +26,9 @@ const Header: FC = memo(() => {
     const [mobileOpen, setMobileOpen] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-    const [currentSection, setCurrentSection] = useState<SectionId | null>(null);
+    const [currentSection, setCurrentSection] = useState<SectionId | null>(
+        null
+    );
     const open = Boolean(anchorEl);
     const handleMenuClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
@@ -91,7 +94,7 @@ const Header: FC = memo(() => {
                 id: 0,
                 text: 'Home',
                 href: 'home',
-                route: '/#home'
+                route: '/#home',
             },
             ...HearderMenuData,
         ],
@@ -106,10 +109,19 @@ const Header: FC = memo(() => {
         intersectionHandler
     );
     const showHeader = useAppSelector((state) => state.app.showHeader);
+    const dispatch = useAppDispatch();
+    const router = useRouter();
+    const handleClick = (e: MouseEvent, id: number, route: string) => {
+        if (id == 1)
+            dispatch({ type: 'app/setSelectedWorksIndex', payload: id - 1 });
+        router.push(route);
+    };
     return (
         <ThemeProvider theme={KL_theme}>
             <Box
                 sx={{
+                    width: '100%',
+                    height: 'auto',
                     position: 'fixed',
                     top: {
                         xs: '60px',
@@ -117,213 +129,236 @@ const Header: FC = memo(() => {
                     },
                     left: '50%',
                     transform: 'translateX(-50%)',
-                    width: '90%',
-                    height: {
-                        xs: '46px',
-                        lg: '84px',
+                    paddingX: {
+                        xs: '16px',
+                        lg: '32px',
                     },
                     display: showHeader ? 'flex' : 'none',
-                    boxSizing: 'border-box',
-                    boxShadow: '0px 0px 24px 0px rgba(41, 41, 41, 0.9)',
-                    backgroundColor: 'warning.main',
-                    borderRadius: {
-                        xs: '16px 0',
-                        lg: '32px 0',
-                    },
                     zIndex: 1000,
                 }}
-                id={headerID}
             >
-                <CssBaseline />
-                <AppBar
-                    component={'nav'}
+                <Box
                     sx={{
-                        height: '100%',
                         width: '100%',
-                        display: 'flex',
+                        height: {
+                            xs: '46px',
+                            lg: '84px',
+                        },
+                        boxSizing: 'border-box',
+                        boxShadow: '0px 0px 24px 0px rgba(41, 41, 41, 0.9)',
+                        backgroundColor: 'warning.main',
                         borderRadius: {
                             xs: '16px 0',
                             lg: '32px 0',
                         },
-                        backgroundColor: 'warning.main',
-                        boxSizing: 'border-box',
                     }}
+                    id={headerID}
                 >
-                    <Toolbar
-                        variant='dense'
+                    <CssBaseline />
+                    <AppBar
+                        component={'nav'}
                         sx={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            width: '100%',
+                            position: 'static',
                             height: '100%',
-                            padding: {
-                                sm: '8px 16px',
-                                lg: '16px 32px',
+                            width: '100%',
+                            display: 'flex',
+                            borderRadius: {
+                                xs: '16px 0',
+                                lg: '32px 0',
                             },
+                            backgroundColor: 'warning.main',
                             boxSizing: 'border-box',
                         }}
                     >
-                        <Link
-                            href='/#home'                            
+                        <Toolbar
+                            variant='dense'
                             sx={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                width: '100%',
                                 height: '100%',
-                                width: 'auto',
-                                textDecoration: 'none',
+                                padding: {
+                                    sm: '8px 16px',
+                                    lg: '16px 32px',
+                                },
+                                boxSizing: 'border-box',
                             }}
                         >
-                            <Typography
-                                color={'info.main'}
+                            <Link
+                                href='/#home'
                                 sx={{
-                                    fontFamily: 'Denton Test',
-                                    fontWeight: 'bold',
-                                    fontStyle: 'normal',
-                                    fontSize: {
-                                        xs: '20px',
-                                        lg: '28px',
-                                    },
-                                    width: '100%',
                                     height: '100%',
-                                    lineHeight: {
-                                        xs: '30px',
-                                        lg: '52px',
-                                    },
-                                    '&:hover': {
-                                        color: 'secondary.main',
-                                        transition: 'color 0.3s ease-in-out',
-                                    },
-                                    '&:focus': {
-                                        color: 'secondary.main',
-                                        transition: 'color 0.3s ease-in-out',
+                                    width: 'auto',
+                                    textDecoration: 'none',
+                                }}
+                            >
+                                <Typography
+                                    color={'info.main'}
+                                    sx={{
+                                        fontFamily: 'Denton Test',
+                                        fontWeight: 'bold',
+                                        fontStyle: 'normal',
+                                        fontSize: {
+                                            xs: '20px',
+                                            lg: '28px',
+                                        },
+                                        width: '100%',
+                                        height: '100%',
+                                        lineHeight: {
+                                            xs: '30px',
+                                            lg: '52px',
+                                        },
+                                        '&:hover': {
+                                            color: 'secondary.main',
+                                            transition:
+                                                'color 0.3s ease-in-out',
+                                        },
+                                        '&:focus': {
+                                            color: 'secondary.main',
+                                            transition:
+                                                'color 0.3s ease-in-out',
+                                        },
+                                    }}
+                                >
+                                    KL Design
+                                </Typography>
+                            </Link>
+                            <IconButton
+                                color='inherit'
+                                aria-label='open drawer'
+                                edge='start'
+                                onClick={(e) => handleMenuClick(e)}
+                                onMouseEnter={() =>
+                                    !isHovered && setIsHovered(true)
+                                }
+                                onMouseLeave={() =>
+                                    isHovered && setIsHovered(false)
+                                }
+                                sx={{
+                                    display: {
+                                        xs: 'block',
+                                        lg: 'none',
                                     },
                                 }}
                             >
-                                KL Design
-                            </Typography>
-                        </Link>
-                        <IconButton
-                            color='inherit'
-                            aria-label='open drawer'
-                            edge='start'
-                            onClick={(e) => handleMenuClick(e)}
-                            onMouseEnter={() =>
-                                !isHovered && setIsHovered(true)
-                            }
-                            onMouseLeave={() =>
-                                isHovered && setIsHovered(false)
-                            }
-                            sx={{
-                                display: {
-                                    xs: 'block',
-                                    lg: 'none',
-                                },
-                            }}
-                        >
-                            <SvgIcon
-                                children={mobileOpen ? menuSVG_2 : menuSVG_1}
-                            />
-                        </IconButton>
-                        <Box
-                            sx={{
-                                display: {
-                                    xs: 'none',
-                                    lg: 'flex',
-                                },
-                                gap: '64px',
-                            }}
-                        >
-                            {HearderMenuData.map((item, index) => (
-                                <Link
-                                    key={item.id}
-                                    href={`${item.route}`}
-                                    sx={{
-                                        textDecoration: 'none',
-                                    }}
-                                >
-                                    <Typography
-                                        color={item.href == currentSection ? 'secondary.main' : 'info.main'}
-                                        sx={{
-                                            fontSize: '1rem',
-                                            fontWeight: 'bold',
-                                            lineHeight: '20px',
-                                            letterSpacing: '0.32px',
-                                            '&:hover': {
-                                                color: 'secondary.main',
-                                                transition:
-                                                    'color 0.3s ease-in-out',
-                                            },
-                                            '&:focus': {
-                                                color: 'secondary.main',
-                                                transition:
-                                                    'color 0.3s ease-in-out',
-                                            },
-                                        }}
-                                    >
-                                        {item.text}
-                                    </Typography>
-                                </Link>
-                            ))}
-                        </Box>
-                    </Toolbar>
-                </AppBar>
-                {HearderMenuData && HearderMenuData.length > 0 && (
-                    <Menu
-                        open={showHeader && open}
-                        id='headerMenu'
-                        anchorEl={anchorEl}
-                        onClose={handleMenuClose}
-                        sx={{
-                            '.MuiPaper-root': {
-                                backgroundColor: 'warning.main',
-                                padding: '40px 32px',
-                                borderRadius: {
-                                    xs: '0 16px',
-                                },
-                                boxShadow:
-                                    '0px 9px 51.3px 0px rgba(41, 41, 41, 0.9)',
-                            },
-                            '.MuiList-root': {
-                                padding: 0,
-                            },
-                            '.MuiMenuItem-root': {
-                                padding: '8px 0',
-                            },
-                        }}
-                    >
-                        {HearderMenuData.map((item) => {
-                            return (
-                                <MenuItem
-                                    key={item.id}
-                                    onClick={handleMenuClose}
-                                    id={item.href}
-                                >
+                                <SvgIcon
+                                    children={
+                                        mobileOpen ? menuSVG_2 : menuSVG_1
+                                    }
+                                />
+                            </IconButton>
+                            <Box
+                                sx={{
+                                    display: {
+                                        xs: 'none',
+                                        lg: 'flex',
+                                    },
+                                    gap: '64px',
+                                }}
+                            >
+                                {HearderMenuData.map((item, index) => (
                                     <Link
+                                        key={item.id}
+                                        onClick={(e) =>
+                                            handleClick(e, item.id, item.route)
+                                        }
                                         sx={{
                                             textDecoration: 'none',
-                                            textAlign: 'center',
-                                            fontWeight: 'bold',
-                                            color: item.href == currentSection ? 'secondary.main' : 'info.main',
-                                            width: '100%',
-                                            padding: 0,
-                                            '&:hover': {
-                                                color: 'secondary.main',
-                                                transition:
-                                                    'color 0.3s ease-in-out',
-                                            },
-                                            '&:focus': {
-                                                color: 'secondary.main',
-                                                transition:
-                                                    'color 0.3s ease-in-out',
-                                            },
                                         }}
-                                        href={`${item.route}`}                            
                                     >
-                                        {item.text}
+                                        <Typography
+                                            color={
+                                                item.href == currentSection
+                                                    ? 'secondary.main'
+                                                    : 'info.main'
+                                            }
+                                            sx={{
+                                                fontSize: '1rem',
+                                                fontWeight: 'bold',
+                                                lineHeight: '20px',
+                                                letterSpacing: '0.32px',
+                                                '&:hover': {
+                                                    color: 'secondary.main',
+                                                    transition:
+                                                        'color 0.3s ease-in-out',
+                                                },
+                                                '&:focus': {
+                                                    color: 'secondary.main',
+                                                    transition:
+                                                        'color 0.3s ease-in-out',
+                                                },
+                                            }}
+                                        >
+                                            {item.text}
+                                        </Typography>
                                     </Link>
-                                </MenuItem>
-                            );
-                        })}
-                    </Menu>
-                )}
+                                ))}
+                            </Box>
+                        </Toolbar>
+                    </AppBar>
+                    {HearderMenuData && HearderMenuData.length > 0 && (
+                        <Menu
+                            open={showHeader && open}
+                            id='headerMenu'
+                            anchorEl={anchorEl}
+                            onClose={handleMenuClose}
+                            sx={{
+                                '.MuiPaper-root': {
+                                    backgroundColor: 'warning.main',
+                                    padding: '40px 32px',
+                                    borderRadius: {
+                                        xs: '0 16px',
+                                    },
+                                    boxShadow:
+                                        '0px 9px 51.3px 0px rgba(41, 41, 41, 0.9)',
+                                },
+                                '.MuiList-root': {
+                                    padding: 0,
+                                },
+                                '.MuiMenuItem-root': {
+                                    padding: '8px 0',
+                                },
+                            }}
+                        >
+                            {HearderMenuData.map((item) => {
+                                return (
+                                    <MenuItem
+                                        key={item.id}
+                                        onClick={handleMenuClose}
+                                        id={item.href}
+                                    >
+                                        <Link
+                                            sx={{
+                                                textDecoration: 'none',
+                                                textAlign: 'center',
+                                                fontWeight: 'bold',
+                                                color:
+                                                    item.href == currentSection
+                                                        ? 'secondary.main'
+                                                        : 'info.main',
+                                                width: '100%',
+                                                padding: 0,
+                                                '&:hover': {
+                                                    color: 'secondary.main',
+                                                    transition:
+                                                        'color 0.3s ease-in-out',
+                                                },
+                                                '&:focus': {
+                                                    color: 'secondary.main',
+                                                    transition:
+                                                        'color 0.3s ease-in-out',
+                                                },
+                                            }}
+                                            href={`${item.route}`}
+                                        >
+                                            {item.text}
+                                        </Link>
+                                    </MenuItem>
+                                );
+                            })}
+                        </Menu>
+                    )}
+                </Box>
             </Box>
         </ThemeProvider>
     );

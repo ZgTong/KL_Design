@@ -56,9 +56,13 @@ const Bar: FC<{
                         lg: '80px',
                     },
                     paddingX: {
-                        xs: '15px',
+                        xs: '28px',
                         lg: '0px',
                     },
+                    ".MuiToolbar-root": {
+                        paddingLeft: 0,
+                        paddingRight: 0,
+                    }
                 }}
             >
                 <Toolbar
@@ -66,6 +70,8 @@ const Bar: FC<{
                         width: '100%',
                         display: 'flex',
                         justifyContent: 'space-between',
+                        paddingLeft: 0,
+                        paddingRight: 0,
                     }}
                 >
                     <Button

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { useMediaQuery, useTheme, Box, Typography } from '@mui/material';
+import { useMediaQuery, Box, Typography } from '@mui/material';
+import theme from '@root/theme';
 
 const BrandLogo = () => {
-    const theme = useTheme();
-    const lessThanLg = useMediaQuery(theme.breakpoints.down('lg'));
+    const KL_Theme = theme();
+    const lessThanLg = useMediaQuery(KL_Theme.breakpoints.down('lg'));
     const [hoverPosition, setHoverPosition] = useState({ x: 0, y: 0 });
     return (
         <>

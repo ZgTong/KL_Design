@@ -1,13 +1,16 @@
 import { FC, memo } from 'react';
+import { useRouter } from 'next/navigation';
 import { Typography, Link, Box, useTheme, useMediaQuery } from '@mui/material';
 import { SelectedWorksData } from '@data/siteData';
 import Light from '@components/widgets/Light';
+import { useAppDispatch } from '@lib/hooks';
+import theme from '@root/theme';
 
 const SelectedWorks: FC<{
     hrefId?: string;
 }> = memo(({ hrefId }) => {
-    const theme = useTheme();
-    const lessThanLg = useMediaQuery(theme.breakpoints.down('lg'));
+    const KL_Theme = theme();
+    const lessThanLg = useMediaQuery(KL_Theme.breakpoints.down('lg'));
     return (
         <Box
             id={hrefId}
@@ -103,6 +106,12 @@ const Work: FC<{
 }> = memo(({ id, title, description, image, href }) => {
     const theme = useTheme();
     const lessThanLg = useMediaQuery(theme.breakpoints.down('lg'));
+    const dispatch = useAppDispatch();
+    const router = useRouter();
+    const handleClick = () => {
+        dispatch({ type: 'app/setSelectedWorksIndex', payload: id - 1 });
+        router.push("/works");
+    };
     return (
         <Box
             sx={{
@@ -155,7 +164,7 @@ const Work: FC<{
                             fontWeight: 'bold',
                             fontFamily: 'Denton Test',
                         }}
-                        href={`/works?name=${href}`}
+                        onClick={handleClick}
                     >
                         {title}
                     </Link>
@@ -179,7 +188,7 @@ const Work: FC<{
                     },
                 }}
             >
-                <Link underline='none' href={`/works?name=${href}`}>
+                <Link underline='none' onClick={handleClick}>
                     <img
                         style={{
                             width: '100%',

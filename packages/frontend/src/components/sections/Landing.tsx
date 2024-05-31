@@ -1,4 +1,5 @@
-import { FC, memo, useEffect, useState } from 'react';
+import { FC, MouseEvent, memo, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import {
     Typography,
     Link,
@@ -7,8 +8,16 @@ import {
 } from '@mui/material';
 import { LandingMenuData } from '@data/siteData';
 import BrandLogo from '@components/widgets/BrandLogo';
+import { useAppDispatch } from '@lib/hooks';
 
 const Landing: FC = memo(() => {
+    const dispatch = useAppDispatch();
+    const router = useRouter();
+    const handleClick = (e: MouseEvent, id: number, route: string) => {
+        console.log('id', id);
+        if(id !== 4) dispatch({ type: 'app/setSelectedWorksIndex', payload: id - 1 });
+        router.push(route);
+    };
     const [slideChecked, setSlideChecked] = useState([
         false,
         false,
@@ -92,7 +101,7 @@ const Landing: FC = memo(() => {
                             >
                                 <Link
                                     key={item.id}
-                                    href={`${item.route}`}
+                                    onClick={(e) => handleClick(e, item.id, item.route)}
                                     color='primary.light'
                                     underline='none'
                                 >

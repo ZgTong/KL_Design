@@ -1,7 +1,6 @@
 import { FC, memo } from 'react';
 import {
     Typography,
-    useTheme,
     Box,
     useMediaQuery,
     ImageList,
@@ -10,12 +9,13 @@ import {
 } from '@mui/material';
 import { PhotographyData } from '@data/siteData';
 import Light from '@components/widgets/Light';
+import theme from '@root/theme';
 
 const Photography: FC<{
     hrefId?: string;
 }> = memo(({ hrefId }) => {
-    const theme = useTheme();
-    const lessThanLg = useMediaQuery(theme.breakpoints.down('lg'));
+    const KL_Theme = theme();
+    const lessThanLg = useMediaQuery(KL_Theme.breakpoints.down('lg'));
     return (
         <Box
             id={hrefId}
