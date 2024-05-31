@@ -141,11 +141,15 @@ const DetailsContainer: FC<{
     id: number;
 }> = memo(({ id }) => {
     const processesRef = useRef<HTMLDivElement>(null);
-    const [processesHeight, setProcessesHeight] = useState("0px");
+    const [processesHeight, setProcessesHeight] = useState(0);
     const [isExpanded, setIsExpanded] = useState(false);
     useEffect(() => {
         if (processesRef.current) {
-            setProcessesHeight(`${processesRef.current.clientHeight}px`);
+            console.log(
+                'processesRef.current.clientHeight',
+                processesRef.current.clientHeight
+            );
+            setProcessesHeight(processesRef.current.clientHeight);
         }
     }, []);
     return (
@@ -155,14 +159,22 @@ const DetailsContainer: FC<{
                 width: '100%',
                 height: 'auto',
                 paddingTop: {
-                    xs: isExpanded ? `calc(${processesHeight})` : `calc(${processesHeight} * 0.3)`,
-                    lg: isExpanded ? `calc(${processesHeight})`  : `calc(${processesHeight} * 0.3)`,
+                    xs: isExpanded
+                        ? `calc(${processesHeight}px - 20px)`
+                        : `calc(${processesHeight}px * 0.3)`,
+                    lg: isExpanded
+                        ? `calc(${processesHeight}px - 30px)`
+                        : `calc(${processesHeight}px * 0.3)`,
                 },
                 transition: 'padding-top 0.5s ease-in-out',
             }}
         >
             <DesignProcess id={id} processesRef={processesRef} />
-            <Execution id={id} isExpanded={isExpanded} setIsExpanded={setIsExpanded}/>
+            <Execution
+                id={id}
+                isExpanded={isExpanded}
+                setIsExpanded={setIsExpanded}
+            />
         </Box>
     );
 });
@@ -428,10 +440,24 @@ const DesignProcess: FC<{
                     sx={{
                         display: 'flex',
                         flexDirection: 'column',
+                        width: {
+                            xs: '100%',
+                            lg: '40%',
+                        },
                         gap: {
                             xs: '8px',
-                            lg: '16px',
+                            lg: '24px',
                         },
+                        position: {
+                            xs: 'static',
+                            lg: 'absolute',
+                        },
+                        right: {
+                            lg: '0',
+                        },
+                        bottom: {
+                            lg: '40px',
+                        }
                     }}
                 >
                     <Typography
@@ -508,8 +534,8 @@ const Execution: FC<{
                     fontWeight: 700,
                     position: 'absolute',
                     top: {
-                        xs: '-50px',
-                        lg: '-62px',
+                        xs: '-47px',
+                        lg: '-64px',
                     },
                     left: '50%',
                     transform: 'translateX(-50%)',
@@ -519,7 +545,7 @@ const Execution: FC<{
                         xs: '0.28px',
                         lg: '0.32px',
                     },
-                    textShadow: '13px 13px 29.7px rgba(0, 0, 0, 0.26)'
+                    textShadow: '13px 13px 29.7px rgba(0, 0, 0, 0.26)',
                 }}
             >{`${isExpanded ? 'Close' : 'Open'} Design Process`}</Typography>
             <IconButton
