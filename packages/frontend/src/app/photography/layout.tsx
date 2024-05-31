@@ -14,6 +14,7 @@ export default function PhotographyLayout({
                 alignItems: 'center',
                 flexDirection: 'column',
             }}
+            id={"photography"}
         >
             <BackgroundSetter />
             {children}
