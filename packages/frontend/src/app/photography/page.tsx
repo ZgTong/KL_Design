@@ -22,6 +22,7 @@ const Home: FC = memo(() => {
             type: 'app/setBackgroundColor',
             payload: KL_theme.palette.info.main,
         });
+        dispatch({ type: 'app/setActiveHeaderTab', payload: "photography" });
     }, []);
 
     return (

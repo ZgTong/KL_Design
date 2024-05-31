@@ -1,4 +1,5 @@
 import { Slice, createSlice } from '@reduxjs/toolkit';
+import { SectionId } from '@data/dataDef';
 export interface AppState {
     showHeader: boolean;
     backgroundImageMobile: string;
@@ -6,6 +7,7 @@ export interface AppState {
     backgroundColor: string;
     photographyIndex: number;
     selectedWorksIndex: number;
+    activeHeaderTab: SectionId;
 }
 export const initialAppState: AppState = {
     showHeader: true,
@@ -16,6 +18,7 @@ export const initialAppState: AppState = {
     backgroundColor: '',
     photographyIndex: 0,
     selectedWorksIndex: 0,
+    activeHeaderTab: 'home',
 };
 export const appSlice: Slice = createSlice({
     name: 'app',
@@ -39,6 +42,9 @@ export const appSlice: Slice = createSlice({
         setSelectedWorksIndex: (state, action) => {
             state.selectedWorksIndex = action.payload;
         },
+        setActiveHeaderTab: (state, action) => {
+            state.activeHeaderTab = action.payload;
+        },
     },
 });
 export const {
@@ -48,5 +54,6 @@ export const {
     setBackgroundColor,
     setPhotographyIndex,
     setSelectedWorksIndex,
+    setActiveHeaderTab
 } = appSlice.actions;
 export default appSlice.reducer;

@@ -38,10 +38,10 @@ export default function RootLayout({
 }>) {
     return (
         <StoreProvider>
-            <html lang='en-US' className={dm_sans.className}>
+            <html lang='en-US' className={dm_sans.className} id='home'>
                 <body id='app'>
                     <Header />
-                    <main id='home'>
+                    <main>
                         {children}
                     </main>
                     <Footer/>

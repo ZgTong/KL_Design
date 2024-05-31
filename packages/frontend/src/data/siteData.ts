@@ -8,7 +8,7 @@ import LinkedinDefaultSvg from '@root/public/images/contact/linkedin_default.svg
 import LinkedinCircleSvg from '@root/public/images/contact/linkedin_circle.svg';
 import InstagramDefaultSvg from '@root/public/images/contact/ig_default.svg';
 import InstagramCircleSvg from '@root/public/images/contact/ig_circle.svg';
-import { title } from 'process';
+
 const HearderMenuData = [
     {
         id: 1,
@@ -102,7 +102,7 @@ const SelectedWorksData = [
             execution: {
                 title: 'Functional Poster',
                 desc: `The Final image was taken with the Japanese Rising Sun concept in mind, creating a dramatic yet cool visual presentation to the customers.
-                
+
 The poster is also functional in B1 size. The promotion poster series for Shark Fin has generated more profit than expected.`,
                 photos: [
                     {

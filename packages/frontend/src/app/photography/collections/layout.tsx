@@ -36,7 +36,6 @@ export default function PhotographyLayout({
                 width: '100%',
                 position: 'relative',
             }}
-            id='photography'
         >
             <BackgroundSetter />
             <Bar contentLength={PhotographyPageData.length} name={"photography"}/>

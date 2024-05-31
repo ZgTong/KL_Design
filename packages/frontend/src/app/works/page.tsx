@@ -9,7 +9,7 @@ import {
     IconButton,
 } from '@mui/material';
 import { SelectedWorksData } from '@data/siteData';
-import { useAppSelector } from '@lib/hooks';
+import { useAppSelector, useAppDispatch } from '@lib/hooks';
 import theme from '@root/theme';
 import CloseSvg from '@root/public/images/close.svg';
 import OpenSvg from '@root/public/images/open.svg';
@@ -129,6 +129,10 @@ const Page: FC = memo(() => {
     const curWorkIndex = useAppSelector(
         (state) => state.app.selectedWorksIndex
     );
+    const dispatch = useAppDispatch();
+    useEffect(() => {
+        dispatch({ type: 'app/setActiveHeaderTab', payload: "works" });
+    }, []);
     return (
         <Suspense>
             <WorkPage />
@@ -145,10 +149,6 @@ const DetailsContainer: FC<{
     const [isExpanded, setIsExpanded] = useState(false);
     useEffect(() => {
         if (processesRef.current) {
-            console.log(
-                'processesRef.current.clientHeight',
-                processesRef.current.clientHeight
-            );
             setProcessesHeight(processesRef.current.clientHeight);
         }
     }, []);

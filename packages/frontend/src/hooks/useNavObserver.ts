@@ -15,6 +15,7 @@ export const useNavObserver = (
     // Create the IntersectionObserver API
     const observer = new IntersectionObserver(
       (entries) => {
+        console.log("entries", entries)
         entries.forEach((entry) => {
           const currentY = entry.boundingClientRect.y;
           const id = entry.target.getAttribute("id");
@@ -30,6 +31,7 @@ export const useNavObserver = (
               aboveToc: currentY < headerWrapper.getBoundingClientRect().y,
               belowToc: !(currentY < headerWrapper.getBoundingClientRect().y),
             };
+            // console.log("decision", decision)
             if (decision.isIntersecting) {
               // Header at 50% from the top, update to current header
               handler(decision.id as SectionId);
@@ -49,7 +51,7 @@ export const useNavObserver = (
       {
         root: null,
         threshold: 0.1,
-        rootMargin: "0px 0px -50% 0px",
+        rootMargin: "0px 0px -30% 0px",
       },
     );
     // Observe all the Sections
@@ -61,5 +63,5 @@ export const useNavObserver = (
       observer.disconnect();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // Dependency here is the post content.
+  }, []); 
 };

@@ -1,5 +1,5 @@
 'use client';
-import { FC, memo, useMemo, useState, useCallback, MouseEvent } from 'react';
+import { FC, memo, useMemo, useState, useCallback, MouseEvent, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAppDispatch, useAppSelector } from '@lib/hooks';
 import {
@@ -26,9 +26,6 @@ const Header: FC = memo(() => {
     const [mobileOpen, setMobileOpen] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-    const [currentSection, setCurrentSection] = useState<SectionId | null>(
-        null
-    );
     const open = Boolean(anchorEl);
     const handleMenuClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
@@ -94,23 +91,26 @@ const Header: FC = memo(() => {
                 id: 0,
                 text: 'Home',
                 href: 'home',
-                route: '/#home',
+                route: '/',
             },
             ...HearderMenuData,
         ],
         []
     );
+    const activeHeaderTab = useAppSelector((state) => state.app.activeHeaderTab);
+    const showHeader = useAppSelector((state) => state.app.showHeader);
+    const dispatch = useAppDispatch();
+    const router = useRouter();
+
     const intersectionHandler = useCallback((section: SectionId | null) => {
-        // console.log("section", section);
-        section && setCurrentSection(section);
+        console.log("section", section);
+        section && dispatch({ type: 'app/setActiveHeaderTab', payload: section });
     }, []);
+
     useNavObserver(
         navSections.map((section) => `#${section.href}`).join(','),
         intersectionHandler
     );
-    const showHeader = useAppSelector((state) => state.app.showHeader);
-    const dispatch = useAppDispatch();
-    const router = useRouter();
     const handleClick = (e: MouseEvent, id: number, route: string) => {
         if (id == 1)
             dispatch({ type: 'app/setSelectedWorksIndex', payload: id - 1 });
@@ -185,7 +185,7 @@ const Header: FC = memo(() => {
                             }}
                         >
                             <Link
-                                href='/#home'
+                                href='/'
                                 sx={{
                                     height: '100%',
                                     width: 'auto',
@@ -268,7 +268,7 @@ const Header: FC = memo(() => {
                                     >
                                         <Typography
                                             color={
-                                                item.href == currentSection
+                                                item.href == activeHeaderTab
                                                     ? 'secondary.main'
                                                     : 'info.main'
                                             }
@@ -333,7 +333,7 @@ const Header: FC = memo(() => {
                                                 textAlign: 'center',
                                                 fontWeight: 'bold',
                                                 color:
-                                                    item.href == currentSection
+                                                    item.href == activeHeaderTab
                                                         ? 'secondary.main'
                                                         : 'info.main',
                                                 width: '100%',

@@ -1,5 +1,5 @@
 'use client';
-import { FC, memo, useState, MouseEvent } from 'react';
+import { FC, memo, useState, MouseEvent, useEffect } from 'react';
 import {
     Box,
     Typography,
@@ -8,7 +8,7 @@ import {
     Backdrop,
 } from '@mui/material';
 import { PhotographyPageData } from '@data/siteData';
-import { useAppSelector } from '@lib/hooks';
+import { useAppSelector, useAppDispatch } from '@lib/hooks';
 import theme from '@root/theme';
 
 const Page: FC = memo(() => {
@@ -17,6 +17,10 @@ const Page: FC = memo(() => {
     const curPhotoIndex = useAppSelector((state) => state.app.photographyIndex);
     const data = PhotographyPageData[curPhotoIndex];
     const KL_theme = theme();
+    const dispatch = useAppDispatch();
+    useEffect(() => {
+        dispatch({ type: 'app/setActiveHeaderTab', payload: "photography" });
+    }, []);
     const handleOpen = (e: MouseEvent) => {
         const target = e.target as HTMLImageElement;
         setCurChildPhoto(target.src);
