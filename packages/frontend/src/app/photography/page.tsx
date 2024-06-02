@@ -11,8 +11,7 @@ const Home: FC = memo(() => {
     const KL_theme = theme(); // Rename the variable 'theme' to 'KL_theme'
 
     useEffect(() => {
-        const background =
-            'linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100px)';
+        const background = '';
         dispatch({ type: 'app/setBackgroundImageMobile', payload: background });
         dispatch({
             type: 'app/setBackgroundImageDesktop',
@@ -22,7 +21,7 @@ const Home: FC = memo(() => {
             type: 'app/setBackgroundColor',
             payload: KL_theme.palette.info.main,
         });
-        dispatch({ type: 'app/setActiveHeaderTab', payload: "photography" });
+        dispatch({ type: 'app/setActiveHeaderTab', payload: 'photography' });
     }, []);
 
     return (

@@ -15,7 +15,8 @@ const Footer: FC<{
     const dispatch = useAppDispatch();
     const router = useRouter();
     const handleClick = (e: MouseEvent, id: number, route: string) => {
-        if (id == 1) dispatch({ type: 'app/setSelectedWorksIndex', payload: id - 1 });
+        if (id == 1)
+            dispatch({ type: 'app/setSelectedWorksIndex', payload: id - 1 });
         router.push(route);
     };
     return (
@@ -105,7 +106,9 @@ const Footer: FC<{
                         {HearderMenuData.map((item, index) => (
                             <Link
                                 key={item.id}
-                                onClick={(e) => handleClick(e, item.id, item.route)}
+                                onClick={(e) =>
+                                    handleClick(e, item.id, item.route)
+                                }
                                 sx={{
                                     textDecoration: 'none',
                                 }}
@@ -148,7 +151,11 @@ const Footer: FC<{
                         }}
                     >
                         {ContactData.map((contact) => (
-                            <Link key={contact.id} href={contact.href} target="_blank">
+                            <Link
+                                key={contact.id}
+                                href={contact.href}
+                                target='_blank'
+                            >
                                 <CustomeSvgIcon
                                     id={contact.id}
                                     width={{ xs: '14px', lg: '16px' }}
@@ -173,7 +180,7 @@ const Footer: FC<{
                         },
                     }}
                 >
-                    <Typography
+                    <Box
                         sx={{
                             fontSize: {
                                 xs: '8px',
@@ -181,9 +188,21 @@ const Footer: FC<{
                             },
                         }}
                     >
-                        Designed by Kepha Leung
-                    </Typography>
-                    <Typography
+                        Designed by{' '}
+                        <Link
+                            sx={{
+                                '&:hover': {
+                                    color: 'secondary.main',
+                                    transition: 'color 0.3s ease-in-out',
+                                },
+                            }}
+                            href='https://au.linkedin.com/in/kepha-leung-467a01151'
+                            target='_blank'
+                        >
+                            Kepha Leung
+                        </Link>
+                    </Box>
+                    <Box
                         sx={{
                             fontSize: {
                                 xs: '8px',
@@ -191,8 +210,20 @@ const Footer: FC<{
                             },
                         }}
                     >
-                        Developed by Zuguang Tong
-                    </Typography>
+                        Developed by{' '}
+                        <Link
+                            sx={{
+                                '&:hover': {
+                                    color: 'secondary.main',
+                                    transition: 'color 0.3s ease-in-out',
+                                },
+                            }}
+                            href='https://www.linkedin.com/in/zuguang-tong-aa7041229'
+                            target='_blank'
+                        >
+                            Zuguang Tong
+                        </Link>
+                    </Box>
                 </Box>
             </Box>
         </ThemeProvider>

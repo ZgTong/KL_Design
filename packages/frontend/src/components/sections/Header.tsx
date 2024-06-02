@@ -85,6 +85,7 @@ const Header: FC = memo(() => {
             />
         </svg>
     );
+    const excludeNavSections = [...HearderMenuData.filter((item) => item.id !== 4)];
     const navSections = useMemo(
         () => [
             {
@@ -93,7 +94,7 @@ const Header: FC = memo(() => {
                 href: 'home',
                 route: '/',
             },
-            ...HearderMenuData,
+            ...excludeNavSections,
         ],
         []
     );
@@ -102,9 +103,9 @@ const Header: FC = memo(() => {
     const dispatch = useAppDispatch();
     const router = useRouter();
 
-    const intersectionHandler = useCallback((section: SectionId | null) => {
-        console.log("section", section);
+    const intersectionHandler = useCallback((section: SectionId | null) => {        
         section && dispatch({ type: 'app/setActiveHeaderTab', payload: section });
+        console.log("section", section, activeHeaderTab);
     }, []);
 
     useNavObserver(
@@ -123,7 +124,8 @@ const Header: FC = memo(() => {
                     width: '100%',
                     height: 'auto',
                     position: 'fixed',
-                    top: {
+                    top: 0,
+                    paddingTop: {
                         xs: '60px',
                         lg: '46px',
                     },
@@ -135,6 +137,7 @@ const Header: FC = memo(() => {
                     },
                     display: showHeader ? 'flex' : 'none',
                     zIndex: 1000,
+                    backgroundImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100px)'
                 }}
             >
                 <Box
@@ -268,7 +271,7 @@ const Header: FC = memo(() => {
                                     >
                                         <Typography
                                             color={
-                                                item.href == activeHeaderTab
+                                                (item.href == activeHeaderTab || item.id == 4)
                                                     ? 'secondary.main'
                                                     : 'info.main'
                                             }
@@ -333,7 +336,7 @@ const Header: FC = memo(() => {
                                                 textAlign: 'center',
                                                 fontWeight: 'bold',
                                                 color:
-                                                    item.href == activeHeaderTab
+                                                    (item.href == activeHeaderTab || item.id == 4)
                                                         ? 'secondary.main'
                                                         : 'info.main',
                                                 width: '100%',

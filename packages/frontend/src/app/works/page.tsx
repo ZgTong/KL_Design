@@ -131,7 +131,7 @@ const Page: FC = memo(() => {
     );
     const dispatch = useAppDispatch();
     useEffect(() => {
-        dispatch({ type: 'app/setActiveHeaderTab', payload: "works" });
+        dispatch({ type: 'app/setActiveHeaderTab', payload: 'works' });
     }, []);
     return (
         <Suspense>
@@ -208,296 +208,319 @@ const DesignProcess: FC<{
         >
             <Box
                 sx={{
-                    position: 'relative',
                     paddingX: {
                         xs: '8px',
                         lg: '0',
                     },
                 }}
             >
-                <Typography
-                    color={KL_theme.palette.primary.contrastText}
-                    sx={{
-                        position: 'absolute',
-                        right: '0',
-                        top: '0',
-                        fontFamily: 'Denton Test',
-                        fontWeight: '900',
-                        fontSize: {
-                            xs: '64px',
-                            lg: '80px',
-                        },
-                        lineHeight: {
-                            xs: '52px',
-                            lg: '64px',
-                        },
-                        letterSpacing: {
-                            xs: '-0.64px',
-                            lg: '-0.8px',
-                        },
-                    }}
-                >{`0${data?.id}`}</Typography>
                 <Box
                     sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '24px',
-                        marginBottom: {
+                        position: 'relative',
+                        paddingBottom: {
                             xs: '24px',
-                            lg: '0',
-                        },
-                    }}
-                >
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: {
-                                xs: '8px',
-                                lg: '16px',
-                            },
-                        }}
-                    >
-                        <Typography
-                            color={KL_theme.palette.warning.main}
-                            sx={{
-                                fontFamily: 'Denton Test',
-                                fontWeight: {
-                                    xs: '700',
-                                    lg: '660',
-                                },
-                                fontSize: {
-                                    xs: '20px',
-                                    lg: '28px',
-                                },
-                                lineHeight: {
-                                    xs: '20px',
-                                    lg: '34px',
-                                },
-                            }}
-                        >
-                            Date:
-                        </Typography>
-                        <Typography
-                            color={KL_theme.palette.primary.main}
-                            sx={{
-                                fontWeight: {
-                                    xs: 'normal',
-                                    lg: '700',
-                                },
-                                lineHeight: {
-                                    xs: '16px',
-                                    lg: '20px',
-                                },
-                            }}
-                        >
-                            {details?.date}
-                        </Typography>
-                    </Box>
-
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: {
-                                xs: '8px',
-                                lg: '16px',
-                            },
-                        }}
-                    >
-                        <Typography
-                            color={KL_theme.palette.warning.main}
-                            sx={{
-                                fontFamily: 'Denton Test',
-                                fontWeight: {
-                                    xs: '700',
-                                    lg: '660',
-                                },
-                                fontSize: {
-                                    xs: '20px',
-                                    lg: '28px',
-                                },
-                                lineHeight: {
-                                    xs: '20px',
-                                    lg: '34px',
-                                },
-                            }}
-                        >
-                            Client:
-                        </Typography>
-                        <Typography
-                            color={KL_theme.palette.primary.main}
-                            sx={{
-                                fontWeight: {
-                                    xs: 'normal',
-                                    lg: '700',
-                                },
-                                lineHeight: {
-                                    xs: '16px',
-                                    lg: '20px',
-                                },
-                            }}
-                        >
-                            {details?.client}
-                        </Typography>
-                    </Box>
-
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: {
-                                xs: '8px',
-                                lg: '16px',
-                            },
-                        }}
-                    >
-                        <Typography
-                            color={KL_theme.palette.warning.main}
-                            sx={{
-                                fontFamily: 'Denton Test',
-                                fontWeight: {
-                                    xs: '700',
-                                    lg: '660',
-                                },
-                                fontSize: {
-                                    xs: '20px',
-                                    lg: '28px',
-                                },
-                                lineHeight: {
-                                    xs: '20px',
-                                    lg: '34px',
-                                },
-                            }}
-                        >
-                            Service Provided:
-                        </Typography>
-                        <Typography
-                            color={KL_theme.palette.primary.main}
-                            sx={{
-                                fontWeight: {
-                                    xs: 'normal',
-                                    lg: '700',
-                                },
-                                lineHeight: {
-                                    xs: '16px',
-                                    lg: '20px',
-                                },
-                            }}
-                        >
-                            {details?.service}
-                        </Typography>
-                    </Box>
-
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: {
-                                xs: '8px',
-                                lg: '16px',
-                            },
-                        }}
-                    >
-                        <Typography
-                            color={KL_theme.palette.warning.main}
-                            sx={{
-                                fontFamily: 'Denton Test',
-                                fontWeight: {
-                                    xs: '700',
-                                    lg: '660',
-                                },
-                                fontSize: {
-                                    xs: '20px',
-                                    lg: '28px',
-                                },
-                                lineHeight: {
-                                    xs: '20px',
-                                    lg: '34px',
-                                },
-                            }}
-                        >
-                            Software:
-                        </Typography>
-                        <Typography
-                            color={KL_theme.palette.primary.main}
-                            sx={{
-                                fontWeight: {
-                                    xs: 'normal',
-                                    lg: '700',
-                                },
-                                lineHeight: {
-                                    xs: '16px',
-                                    lg: '20px',
-                                },
-                            }}
-                        >
-                            {details?.software}
-                        </Typography>
-                    </Box>
-                </Box>
-                <Box
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        width: {
-                            xs: '100%',
-                            lg: '40%',
-                        },
-                        gap: {
-                            xs: '8px',
-                            lg: '24px',
-                        },
-                        position: {
-                            xs: 'static',
-                            lg: 'absolute',
-                        },
-                        right: {
-                            lg: '0',
-                        },
-                        bottom: {
                             lg: '40px',
-                        }
+                        },
+                        borderBottomColor: KL_theme.palette.primary.dark,
+                        borderBottomWidth: '1px',
+                        borderBottomStyle: 'solid',
                     }}
                 >
                     <Typography
-                        color={KL_theme.palette.warning.main}
+                        color={KL_theme.palette.primary.contrastText}
                         sx={{
+                            position: 'absolute',
+                            right: '0',
+                            top: '0',
                             fontFamily: 'Denton Test',
-                            fontWeight: {
-                                xs: '700',
-                                lg: '660',
-                            },
+                            fontWeight: '900',
                             fontSize: {
-                                xs: '20px',
-                                lg: '28px',
+                                xs: '64px',
+                                lg: '80px',
                             },
                             lineHeight: {
-                                xs: '20px',
-                                lg: '34px',
+                                xs: '52px',
+                                lg: '64px',
+                            },
+                            letterSpacing: {
+                                xs: '-0.64px',
+                                lg: '-0.8px',
                             },
                         }}
-                    >
-                        The Brief
-                    </Typography>
-                    <Typography
-                        color={KL_theme.palette.primary.main}
+                    >{`0${data?.id}`}</Typography>
+                    <Box
                         sx={{
-                            fontWeight: {
-                                xs: 'normal',
-                                lg: '700',
-                            },
-                            lineHeight: {
-                                xs: '16px',
-                                lg: '20px',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '24px',
+                            marginBottom: {
+                                xs: '24px',
+                                lg: '0',
                             },
                         }}
                     >
-                        {details?.brief}
-                    </Typography>
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: {
+                                    xs: '8px',
+                                    lg: '16px',
+                                },
+                            }}
+                        >
+                            <Typography
+                                color={KL_theme.palette.warning.main}
+                                sx={{
+                                    fontFamily: 'Denton Test',
+                                    fontWeight: {
+                                        xs: '700',
+                                        lg: '660',
+                                    },
+                                    fontSize: {
+                                        xs: '20px',
+                                        lg: '28px',
+                                    },
+                                    lineHeight: {
+                                        xs: '20px',
+                                        lg: '34px',
+                                    },
+                                }}
+                            >
+                                Date:
+                            </Typography>
+                            <Typography
+                                color={KL_theme.palette.primary.main}
+                                sx={{
+                                    fontWeight: {
+                                        xs: 'normal',
+                                        lg: '700',
+                                    },
+                                    lineHeight: {
+                                        xs: '16px',
+                                        lg: '20px',
+                                    },
+                                }}
+                            >
+                                {details?.date}
+                            </Typography>
+                        </Box>
+
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: {
+                                    xs: '8px',
+                                    lg: '16px',
+                                },
+                            }}
+                        >
+                            <Typography
+                                color={KL_theme.palette.warning.main}
+                                sx={{
+                                    fontFamily: 'Denton Test',
+                                    fontWeight: {
+                                        xs: '700',
+                                        lg: '660',
+                                    },
+                                    fontSize: {
+                                        xs: '20px',
+                                        lg: '28px',
+                                    },
+                                    lineHeight: {
+                                        xs: '20px',
+                                        lg: '34px',
+                                    },
+                                }}
+                            >
+                                Client:
+                            </Typography>
+                            <Typography
+                                color={KL_theme.palette.primary.main}
+                                sx={{
+                                    fontWeight: {
+                                        xs: 'normal',
+                                        lg: '700',
+                                    },
+                                    lineHeight: {
+                                        xs: '16px',
+                                        lg: '20px',
+                                    },
+                                }}
+                            >
+                                {details?.client}
+                            </Typography>
+                        </Box>
+
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: {
+                                    xs: '8px',
+                                    lg: '16px',
+                                },
+                            }}
+                        >
+                            <Typography
+                                color={KL_theme.palette.warning.main}
+                                sx={{
+                                    fontFamily: 'Denton Test',
+                                    fontWeight: {
+                                        xs: '700',
+                                        lg: '660',
+                                    },
+                                    fontSize: {
+                                        xs: '20px',
+                                        lg: '28px',
+                                    },
+                                    lineHeight: {
+                                        xs: '20px',
+                                        lg: '34px',
+                                    },
+                                }}
+                            >
+                                Service Provided:
+                            </Typography>
+                            <Typography
+                                color={KL_theme.palette.primary.main}
+                                sx={{
+                                    fontWeight: {
+                                        xs: 'normal',
+                                        lg: '700',
+                                    },
+                                    lineHeight: {
+                                        xs: '16px',
+                                        lg: '20px',
+                                    },
+                                }}
+                            >
+                                {details?.service}
+                            </Typography>
+                        </Box>
+
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: {
+                                    xs: '8px',
+                                    lg: '16px',
+                                },
+                            }}
+                        >
+                            <Typography
+                                color={KL_theme.palette.warning.main}
+                                sx={{
+                                    fontFamily: 'Denton Test',
+                                    fontWeight: {
+                                        xs: '700',
+                                        lg: '660',
+                                    },
+                                    fontSize: {
+                                        xs: '20px',
+                                        lg: '28px',
+                                    },
+                                    lineHeight: {
+                                        xs: '20px',
+                                        lg: '34px',
+                                    },
+                                }}
+                            >
+                                Software:
+                            </Typography>
+                            <Typography
+                                color={KL_theme.palette.primary.main}
+                                sx={{
+                                    fontWeight: {
+                                        xs: 'normal',
+                                        lg: '700',
+                                    },
+                                    lineHeight: {
+                                        xs: '16px',
+                                        lg: '20px',
+                                    },
+                                }}
+                            >
+                                {details?.software}
+                            </Typography>
+                        </Box>
+                    </Box>
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            width: {
+                                xs: '100%',
+                                lg: '40%',
+                            },
+                            gap: {
+                                xs: '8px',
+                                lg: '24px',
+                            },
+                            position: {
+                                xs: 'static',
+                                lg: 'absolute',
+                            },
+                            right: {
+                                lg: '0',
+                            },
+                            bottom: {
+                                lg: '40px',
+                            },
+                        }}
+                    >
+                        <Typography
+                            color={KL_theme.palette.warning.main}
+                            sx={{
+                                fontFamily: 'Denton Test',
+                                fontWeight: {
+                                    xs: '700',
+                                    lg: '660',
+                                },
+                                fontSize: {
+                                    xs: '20px',
+                                    lg: '28px',
+                                },
+                                lineHeight: {
+                                    xs: '20px',
+                                    lg: '34px',
+                                },
+                            }}
+                        >
+                            The Brief
+                        </Typography>
+                        <Typography
+                            color={KL_theme.palette.primary.main}
+                            sx={{
+                                fontWeight: {
+                                    xs: 'normal',
+                                    lg: '700',
+                                },
+                                lineHeight: {
+                                    xs: '16px',
+                                    lg: '20px',
+                                },
+                            }}
+                        >
+                            {details?.brief}
+                        </Typography>
+                    </Box>
                 </Box>
             </Box>
-            <Box></Box>
+            <Box>
+                <Box sx={{}}>
+                    <Box
+                        sx={{
+                            paddingX: {
+                                xs: '8px',
+                                lg: '0',
+                            },
+                        }}
+                    ></Box>
+                </Box>
+            </Box>
         </Box>
     );
 });

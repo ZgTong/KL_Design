@@ -9,6 +9,7 @@ export const useNavObserver = (
 ) => {
   useEffect(() => {
     // Get all sections
+    console.log("first selectors", selectors)
     const headings = document.querySelectorAll(selectors);
     const headingsArray = Array.from(headings);
     const headerWrapper = document.getElementById(headerID);
