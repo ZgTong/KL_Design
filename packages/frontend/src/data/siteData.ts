@@ -70,48 +70,85 @@ const SelectedWorksData = [
             lg: '/images/selected_works/main_lg_1.png',
         },
         details: {
-            title: 'Poster Series', 
-            desc: 'DASSAI 39',
+            title: 'Promotion Poster  Series',
+            desc: 'Shark Fin',
             date: 'August 2023',
             client: 'Shark Fin Keysborough',
             service: 'Poster Design / Photography',
-            software: 'Lightroom /  Photoshop / Illustrator',
-            brief: 'Continue the monthly promotion series created for Shark Fin, conduct a photoshoot and create a promotion poster for the assigned Japanese whiskey in A5 and A6 size.',
+            software: 'Lightroom / Photoshop / Illustrator',
+            brief: 'Continue the monthly promotional series for Shark Fin by conducting a photoshoot and designing a poster for the Japanese sake, in A5 and A6 sizes.',
             processes: [
                 {
-                    title: 'Research',
-                    desc: 'Understand the brand and the product',
-                    img: '/images/selected_works/process_1.png',
+                    id: 1,
+                    title: '',
+                    desc: '',
+                    url: {
+                        xs: '/images/selected_works/work_1/mobile/process/1.jpg',
+                        lg: '/images/selected_works/work_1/desktop/process/1.jpg',
+                    },
                 },
                 {
-                    title: 'Research',
-                    desc: 'Understand the brand and the product',
-                    img: '/images/selected_works/process_1.png',
+                    id: 2,
+                    title: '',
+                    desc: '',
+                    url: {
+                        xs: '/images/selected_works/work_1/mobile/process/2.jpg',
+                        lg: '/images/selected_works/work_1/desktop/process/2.jpg',
+                    },
                 },
                 {
-                    title: 'Research',
-                    desc: 'Understand the brand and the product',
-                    img: '/images/selected_works/process_1.png',
+                    id: 3,
+                    title: '',
+                    desc: '',
+                    url: {
+                        xs: '/images/selected_works/work_1/mobile/process/3.jpg',
+                        lg: '/images/selected_works/work_1/desktop/process/3.jpg',
+                    },
                 },
                 {
-                    title: 'Research',
-                    desc: 'Understand the brand and the product',
-                    img: '/images/selected_works/process_1.png',
+                    id: 4,
+                    title: '',
+                    desc: '',
+                    url: {
+                        xs: '/images/selected_works/work_1/mobile/process/4.jpg',
+                        lg: '/images/selected_works/work_1/desktop/process/4.jpg',
+                    },
                 },
             ],
             execution: {
                 title: 'Functional Poster',
-                desc: `The Final image was taken with the Japanese Rising Sun concept in mind, creating a dramatic yet cool visual presentation to the customers.
+                desc: `The final image was meticulously crafted to deliver a captivating and cool visual experience for customers. Additionally, the poster is designed to be versatile and functional across different sizes. 
 
-The poster is also functional in B1 size. The promotion poster series for Shark Fin has generated more profit than expected.`,
+Notably, the promotional poster series for Shark Fin has surpassed profit projections.`,
                 photos: [
                     {
                         id: 1,
                         url: {
-                            xs: '/images/selected_works/main_1.png',
-                            lg: '/images/selected_works/main_lg_1.png',
+                            xs: '/images/selected_works/work_1/mobile/execution/1.jpg',
+                            lg: '/images/selected_works/work_1/desktop/execution/1.jpg',
                         },
                     },
+                    {
+                        id: 2,
+                        url: {
+                            xs: '/images/selected_works/work_1/mobile/execution/2.jpg',
+                            lg: '/images/selected_works/work_1/desktop/execution/2.jpg',
+                        },
+                    },
+                    {
+                        id: 3,
+                        url: {
+                            xs: '/images/selected_works/work_1/mobile/execution/3.jpg',
+                            lg: '/images/selected_works/work_1/desktop/execution/3.jpg',
+                        },
+                    },
+                    {
+                        id: 4,
+                        url: {
+                            xs: '/images/selected_works/work_1/mobile/execution/4.jpg',
+                            lg: '/images/selected_works/work_1/desktop/execution/4.jpg',
+                        },
+                    }
                 ],
             },
         },
@@ -135,36 +172,53 @@ The poster is also functional in B1 size. The promotion poster series for Shark 
             brief: 'Continue the monthly promotion series created for Shark Fin, conduct a photoshoot and create a promotion poster for the assigned Japanese whiskey in A5 and A6 size.',
             processes: [
                 {
-                    title: 'Research',
-                    desc: 'Understand the brand and the product',
-                    img: '/images/selected_works/process_1.png',
+                    id: 1,
+                    title: '',
+                    desc: '',
+                    url: {
+                        xs: '/images/selected_works/work_1/mobile/process/1.jpg',
+                        lg: '/images/selected_works/work_1/desktop/process/1.jpg',
+                    },
                 },
                 {
-                    title: 'Research',
-                    desc: 'Understand the brand and the product',
-                    img: '/images/selected_works/process_1.png',
+                    id: 2,
+                    title: '',
+                    desc: '',
+                    url: {
+                        xs: '/images/selected_works/work_1/mobile/process/2.jpg',
+                        lg: '/images/selected_works/work_1/desktop/process/2.jpg',
+                    },
                 },
                 {
-                    title: 'Research',
-                    desc: 'Understand the brand and the product',
-                    img: '/images/selected_works/process_1.png',
+                    id: 3,
+                    title: '',
+                    desc: '',
+                    url: {
+                        xs: '/images/selected_works/work_1/mobile/process/3.jpg',
+                        lg: '/images/selected_works/work_1/desktop/process/3.jpg',
+                    },
                 },
                 {
-                    title: 'Research',
-                    desc: 'Understand the brand and the product',
-                    img: '/images/selected_works/process_1.png',
+                    id: 4,
+                    title: '',
+                    desc: '',
+                    url: {
+                        xs: '/images/selected_works/work_1/mobile/process/4.jpg',
+                        lg: '/images/selected_works/work_1/desktop/process/4.jpg',
+                    },
                 },
             ],
             execution: {
                 title: 'Functional Poster',
-                desc: `The Final image was taken with the Japanese Rising Sun concept in mind, creating a dramatic yet cool visual presentation to the customers.
-                The poster is also functional in B1 size. The promotion poster series for Shark Fin has generated more profit than expected.`,
+                desc: `The final image was meticulously crafted to deliver a captivating and cool visual experience for customers. Additionally, the poster is designed to be versatile and functional across different sizes. 
+
+Notably, the promotional poster series for Shark Fin has surpassed profit projections.`,
                 photos: [
                     {
                         id: 1,
                         url: {
-                            xs: '/images/selected_works/main_1.png',
-                            lg: '/images/selected_works/main_lg_1.png',
+                            xs: '/images/selected_works/work_1/mobile/execution/1.jpg',
+                            lg: '/images/selected_works/work_1/desktop/execution/1.jpg',
                         },
                     },
                 ],
@@ -190,36 +244,53 @@ The poster is also functional in B1 size. The promotion poster series for Shark 
             brief: 'Continue the monthly promotion series created for Shark Fin, conduct a photoshoot and create a promotion poster for the assigned Japanese whiskey in A5 and A6 size.',
             processes: [
                 {
-                    title: 'Research',
-                    desc: 'Understand the brand and the product',
-                    img: '/images/selected_works/process_1.png',
+                    id: 1,
+                    title: '',
+                    desc: '',
+                    url: {
+                        xs: '/images/selected_works/work_1/mobile/process/1.jpg',
+                        lg: '/images/selected_works/work_1/desktop/process/1.jpg',
+                    },
                 },
                 {
-                    title: 'Research',
-                    desc: 'Understand the brand and the product',
-                    img: '/images/selected_works/process_1.png',
+                    id: 2,
+                    title: '',
+                    desc: '',
+                    url: {
+                        xs: '/images/selected_works/work_1/mobile/process/2.jpg',
+                        lg: '/images/selected_works/work_1/desktop/process/2.jpg',
+                    },
                 },
                 {
-                    title: 'Research',
-                    desc: 'Understand the brand and the product',
-                    img: '/images/selected_works/process_1.png',
+                    id: 3,
+                    title: '',
+                    desc: '',
+                    url: {
+                        xs: '/images/selected_works/work_1/mobile/process/3.jpg',
+                        lg: '/images/selected_works/work_1/desktop/process/3.jpg',
+                    },
                 },
                 {
-                    title: 'Research',
-                    desc: 'Understand the brand and the product',
-                    img: '/images/selected_works/process_1.png',
+                    id: 4,
+                    title: '',
+                    desc: '',
+                    url: {
+                        xs: '/images/selected_works/work_1/mobile/process/4.jpg',
+                        lg: '/images/selected_works/work_1/desktop/process/4.jpg',
+                    },
                 },
             ],
             execution: {
                 title: 'Functional Poster',
-                desc: `The Final image was taken with the Japanese Rising Sun concept in mind, creating a dramatic yet cool visual presentation to the customers.
-                The poster is also functional in B1 size. The promotion poster series for Shark Fin has generated more profit than expected.`,
+                desc: `The final image was meticulously crafted to deliver a captivating and cool visual experience for customers. Additionally, the poster is designed to be versatile and functional across different sizes. 
+
+Notably, the promotional poster series for Shark Fin has surpassed profit projections.`,
                 photos: [
                     {
                         id: 1,
                         url: {
-                            xs: '/images/selected_works/main_1.png',
-                            lg: '/images/selected_works/main_lg_1.png',
+                            xs: '/images/selected_works/work_1/mobile/execution/1.jpg',
+                            lg: '/images/selected_works/work_1/desktop/execution/1.jpg',
                         },
                     },
                 ],
@@ -245,36 +316,53 @@ The poster is also functional in B1 size. The promotion poster series for Shark 
             brief: 'Continue the monthly promotion series created for Shark Fin, conduct a photoshoot and create a promotion poster for the assigned Japanese whiskey in A5 and A6 size.',
             processes: [
                 {
-                    title: 'Research',
-                    desc: 'Understand the brand and the product',
-                    img: '/images/selected_works/process_1.png',
+                    id: 1,
+                    title: '',
+                    desc: '',
+                    url: {
+                        xs: '/images/selected_works/work_1/mobile/process/1.jpg',
+                        lg: '/images/selected_works/work_1/desktop/process/1.jpg',
+                    },
                 },
                 {
-                    title: 'Research',
-                    desc: 'Understand the brand and the product',
-                    img: '/images/selected_works/process_1.png',
+                    id: 2,
+                    title: '',
+                    desc: '',
+                    url: {
+                        xs: '/images/selected_works/work_1/mobile/process/2.jpg',
+                        lg: '/images/selected_works/work_1/desktop/process/2.jpg',
+                    },
                 },
                 {
-                    title: 'Research',
-                    desc: 'Understand the brand and the product',
-                    img: '/images/selected_works/process_1.png',
+                    id: 3,
+                    title: '',
+                    desc: '',
+                    url: {
+                        xs: '/images/selected_works/work_1/mobile/process/3.jpg',
+                        lg: '/images/selected_works/work_1/desktop/process/3.jpg',
+                    },
                 },
                 {
-                    title: 'Research',
-                    desc: 'Understand the brand and the product',
-                    img: '/images/selected_works/process_1.png',
+                    id: 4,
+                    title: '',
+                    desc: '',
+                    url: {
+                        xs: '/images/selected_works/work_1/mobile/process/4.jpg',
+                        lg: '/images/selected_works/work_1/desktop/process/4.jpg',
+                    },
                 },
             ],
             execution: {
                 title: 'Functional Poster',
-                desc: `The Final image was taken with the Japanese Rising Sun concept in mind, creating a dramatic yet cool visual presentation to the customers.
-                The poster is also functional in B1 size. The promotion poster series for Shark Fin has generated more profit than expected.`,
+                desc: `The final image was meticulously crafted to deliver a captivating and cool visual experience for customers. Additionally, the poster is designed to be versatile and functional across different sizes. 
+
+Notably, the promotional poster series for Shark Fin has surpassed profit projections.`,
                 photos: [
                     {
                         id: 1,
                         url: {
-                            xs: '/images/selected_works/main_1.png',
-                            lg: '/images/selected_works/main_lg_1.png',
+                            xs: '/images/selected_works/work_1/mobile/execution/1.jpg',
+                            lg: '/images/selected_works/work_1/desktop/execution/1.jpg',
                         },
                     },
                 ],

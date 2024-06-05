@@ -16,8 +16,8 @@ export default function SelectedWorksLayout({
     const KL_theme = theme();
     const lessThanLg = useMediaQuery(KL_theme.breakpoints.down('lg'));
     useEffect(() => {
-        const backgroundMobile = `url(/images/bg/mobile_work_page_bg.png)`;
-        const backgroundDesktop = `url(/images/bg/desktop_work_page_bg.png)`;
+        const backgroundMobile = `url(/images/bg/mobile_work_page_bg_top.png)`;
+        const backgroundDesktop = `url(/images/bg/desktop_work_page_bg_top.png)`;
         dispatch({ type: 'app/setBackgroundImageMobile', payload: backgroundMobile });
         dispatch({
             type: 'app/setBackgroundImageDesktop',

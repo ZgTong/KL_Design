@@ -1,5 +1,13 @@
 'use client';
-import { FC, memo, Suspense, useState, useEffect, useRef } from 'react';
+import {
+    FC,
+    memo,
+    Suspense,
+    useState,
+    useEffect,
+    useRef,
+    MouseEvent,
+} from 'react';
 import {
     Box,
     Typography,
@@ -7,6 +15,7 @@ import {
     ImageList,
     ImageListItem,
     IconButton,
+    Backdrop,
 } from '@mui/material';
 import { SelectedWorksData } from '@data/siteData';
 import { useAppSelector, useAppDispatch } from '@lib/hooks';
@@ -16,7 +25,9 @@ import OpenSvg from '@root/public/images/open.svg';
 
 const KL_theme = theme();
 
-const WorkPage: FC = memo(() => {
+const WorkPage: FC<{
+    handleOpen: (e: MouseEvent) => void;
+}> = memo(({ handleOpen }) => {
     const lessThanLg = useMediaQuery(KL_theme.breakpoints.down('lg'));
     const curWorkIndex = useAppSelector(
         (state) => state.app.selectedWorksIndex
@@ -34,8 +45,8 @@ const WorkPage: FC = memo(() => {
                 maxWidth: '1400px',
                 height: 'auto',
                 paddingBottom: {
-                    xs: '64px',
-                    lg: '104px',
+                    xs: '24px',
+                    lg: '40px',
                 },
                 marginTop: {
                     xs: '0',
@@ -50,8 +61,8 @@ const WorkPage: FC = memo(() => {
                     flexDirection: 'column',
                     alignItems: 'center',
                     gap: {
-                        xs: '24px',
-                        lg: '36px',
+                        xs: '16px',
+                        lg: '32px',
                     },
                     padding: {
                         xs: '0px 30px 20px',
@@ -70,7 +81,19 @@ const WorkPage: FC = memo(() => {
                             xs: '32px',
                             lg: '102px',
                         },
+                        paddingX: {
+                            xs: '12%',
+                            lg: '24%',
+                        },
                         textShadow: '5px 8px 19.8px rgba(0, 0, 0, 0.19)',
+                        letterSpacing: {
+                            xs: '-0.32px',
+                            lg: '-1.02px;',
+                        },
+                        lineHeight: {
+                            xs: '38px',
+                            lg: '82px',
+                        },
                     }}
                 >
                     {details.title}
@@ -83,20 +106,25 @@ const WorkPage: FC = memo(() => {
                     sx={{
                         width: '100%',
                         fontWeight: {
-                            xs: 'normal',
-                            lg: '660',
+                            xs: '700',
+                            lg: '700',
                         },
                         fontFamily: {
                             lg: 'Denton Test',
                         },
+                        textShadow: '13px 13px 29.7px rgba(0, 0, 0, 0.26)',
                         textAlign: 'center',
                         fontSize: {
                             xs: '16px',
-                            lg: '20px',
+                            lg: '28px',
                         },
                         lineHeight: {
                             xs: '20px',
                             lg: '34px',
+                        },
+                        letterSpacing: {
+                            xs: '-0.32px',
+                            lg: '-0.28px',
                         },
                     }}
                 >
@@ -112,46 +140,168 @@ const WorkPage: FC = memo(() => {
                     },
                 }}
             >
-                <img
-                    src={data.entryImg[lessThanLg ? 'xs' : 'lg']}
-                    style={{
-                        width: '100%',
-                        height: 'auto',
-                        objectFit: 'cover',
-                    }}
-                />
+                <ImageList cols={1} variant='quilted'>
+                    <ImageListItem
+                        key={1}
+                        cols={1}
+                        rows={1}
+                        onClick={handleOpen}
+                    >
+                        <img
+                            src={data.entryImg[lessThanLg ? 'xs' : 'lg']}
+                            style={{
+                                width: '100%',
+                                height: 'auto',
+                                objectFit: 'cover',
+                            }}
+                        />
+                    </ImageListItem>
+                </ImageList>
             </Box>
         </Box>
     );
 });
 
 const Page: FC = memo(() => {
+    const [open, setOpen] = useState(false);
+    const [curChildPhoto, setCurChildPhoto] = useState('');
+    const [nextWorkTitle, setNextWorkTitle] = useState('');
     const curWorkIndex = useAppSelector(
         (state) => state.app.selectedWorksIndex
     );
+    const handleOpen = (e: MouseEvent) => {
+        const target = e.target as HTMLImageElement;
+        setCurChildPhoto(target.src);
+        setOpen(true);
+    };
+    const handleClose = () => {
+        setOpen(false);
+    };
     const dispatch = useAppDispatch();
     useEffect(() => {
         dispatch({ type: 'app/setActiveHeaderTab', payload: 'works' });
     }, []);
+    useEffect(() => {
+        let nextIndex =
+            curWorkIndex === SelectedWorksData.length - 1
+                ? 0
+                : curWorkIndex + 1;
+        setNextWorkTitle(SelectedWorksData[nextIndex].details.title);
+    }, [curWorkIndex]);
     return (
         <Suspense>
-            <WorkPage />
-            <DetailsContainer id={curWorkIndex + 1} />
+            <WorkPage handleOpen={handleOpen} />
+            <DetailsContainer id={curWorkIndex + 1} handleOpen={handleOpen} />
+            <Box
+                sx={{
+                    height: {
+                        xs: '191px',
+                        lg: '274px',
+                    },
+                    width: '100%',
+                    backgroundImage: {
+                        xs: `url(/images/bg/mobile_work_page_bg_bottom.png)`,
+                        lg: `url(/images/bg/desktop_work_page_bg_bottom.png)`,
+                    },
+                    backgroundSize: '100% 100%',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: '0% 0%',
+                    padding: {
+                        xs: '32px 30px 72px',
+                        lg: '52px 70px 104px',
+                    },
+                }}
+            >
+                <Box
+                    sx={{
+                        width: '100%',
+                        height: '100%',
+                        borderBottomColor: '#272727',
+                        borderBottomWidth: '1px',
+                        borderBottomStyle: 'solid',
+                        textAlign: 'center',
+                    }}
+                >
+                    <Typography
+                        sx={{
+                            fontFamily: {
+                                lg: 'Denton Test',                            
+                            },
+                            fontWeight: '700',
+                            fontSize: {
+                                xs: '14px',
+                                lg: '16px',
+                            },
+                            lineHeight: {
+                                xs: '16px',
+                                lg: '20px',
+                            },
+                            letterSpacing: {
+                                xs: '0.28px',
+                                lg: '0.32px',
+                            },
+                        }}
+                        color={KL_theme.palette.primary.light}
+                    >
+                        Next Client Work
+                    </Typography>
+                    <Typography
+                        sx={{
+                            fontFamily: 'Denton Test',
+                            fontWeight: '660',
+                            fontSize: {
+                                xs: '32px',
+                                lg: '36px',
+                            },
+                            lineHeight: {
+                                xs: '38px',
+                                lg: '44px',
+                            },
+                            letterSpacing: {
+                                xs: '-0.32px',
+                                lg: '-0.36px',
+                            },
+                        }}
+                        color={KL_theme.palette.secondary.dark}
+                    >
+                        {nextWorkTitle}
+                    </Typography>
+                </Box>
+            </Box>
+            <Backdrop
+                open={open}
+                onClick={handleClose}
+                sx={{
+                    backgroundColor: '#000',
+                    zIndex: (theme) => theme.zIndex.drawer + 1,
+                }}
+            >
+                <img
+                    src={curChildPhoto}
+                    style={{
+                        objectFit: 'contain',
+                        width: '100%',
+                        height: '100%',
+                    }}
+                />
+            </Backdrop>
         </Suspense>
     );
 });
 
 const DetailsContainer: FC<{
     id: number;
-}> = memo(({ id }) => {
+    handleOpen: (e: MouseEvent) => void;
+}> = memo(({ id, handleOpen }) => {
     const processesRef = useRef<HTMLDivElement>(null);
     const [processesHeight, setProcessesHeight] = useState(0);
     const [isExpanded, setIsExpanded] = useState(false);
     useEffect(() => {
+        console.log('processesRef', processesRef);
         if (processesRef.current) {
             setProcessesHeight(processesRef.current.clientHeight);
         }
-    }, []);
+    }, [processesRef]);
     return (
         <Box
             sx={{
@@ -161,19 +311,24 @@ const DetailsContainer: FC<{
                 paddingTop: {
                     xs: isExpanded
                         ? `calc(${processesHeight}px - 20px)`
-                        : `calc(${processesHeight}px * 0.3)`,
+                        : `600px`,
                     lg: isExpanded
                         ? `calc(${processesHeight}px - 30px)`
-                        : `calc(${processesHeight}px * 0.3)`,
+                        : `700px`,
                 },
                 transition: 'padding-top 0.5s ease-in-out',
             }}
         >
-            <DesignProcess id={id} processesRef={processesRef} />
+            <DesignProcess
+                id={id}
+                processesRef={processesRef}
+                handleOpen={handleOpen}
+            />
             <Execution
                 id={id}
                 isExpanded={isExpanded}
                 setIsExpanded={setIsExpanded}
+                handleOpen={handleOpen}
             />
         </Box>
     );
@@ -182,10 +337,12 @@ const DetailsContainer: FC<{
 const DesignProcess: FC<{
     id: number;
     processesRef: React.RefObject<HTMLDivElement>;
-}> = memo(({ id, processesRef }) => {
+    handleOpen: (e: MouseEvent) => void;
+}> = memo(({ id, processesRef, handleOpen }) => {
     const data = SelectedWorksData.find((item) => item.id === id);
     const details = data?.details;
     const processes = details?.processes || [];
+    const lessThanLg = useMediaQuery(KL_theme.breakpoints.down('lg'));
     return (
         <Box
             ref={processesRef}
@@ -195,14 +352,14 @@ const DesignProcess: FC<{
                 width: '100%',
                 height: 'auto',
                 borderRadius: {
-                    xs: '0px 24px',
-                    lg: '0px 32px',
+                    xs: '0 24px 0 0',
+                    lg: '0 32px 0 0',
                 },
                 backgroundColor: KL_theme.palette.info.main,
                 boxShadow: '13px 13px 29.7px 0px rgba(0, 0, 0, 0.26)',
                 padding: {
                     xs: '56px 27px 86px',
-                    lg: '64px 70px 104px',
+                    lg: '64px 70px 140px',
                 },
             }}
         >
@@ -221,7 +378,7 @@ const DesignProcess: FC<{
                             xs: '24px',
                             lg: '40px',
                         },
-                        borderBottomColor: KL_theme.palette.primary.dark,
+                        borderBottomColor: KL_theme.palette.primary.main,
                         borderBottomWidth: '1px',
                         borderBottomStyle: 'solid',
                     }}
@@ -273,10 +430,7 @@ const DesignProcess: FC<{
                                 color={KL_theme.palette.warning.main}
                                 sx={{
                                     fontFamily: 'Denton Test',
-                                    fontWeight: {
-                                        xs: '700',
-                                        lg: '660',
-                                    },
+                                    fontWeight: '700',
                                     fontSize: {
                                         xs: '20px',
                                         lg: '28px',
@@ -285,6 +439,10 @@ const DesignProcess: FC<{
                                         xs: '20px',
                                         lg: '34px',
                                     },
+                                    letterSpacing: {
+                                        xs: '-0.2px',
+                                        lg: '-0.28px',
+                                    },
                                 }}
                             >
                                 Date:
@@ -292,9 +450,10 @@ const DesignProcess: FC<{
                             <Typography
                                 color={KL_theme.palette.primary.main}
                                 sx={{
-                                    fontWeight: {
-                                        xs: 'normal',
-                                        lg: '700',
+                                    fontWeight: '700',
+                                    letterSpacing: {
+                                        xs: '-0.28px',
+                                        lg: '-0.32px',
                                     },
                                     lineHeight: {
                                         xs: '16px',
@@ -320,10 +479,7 @@ const DesignProcess: FC<{
                                 color={KL_theme.palette.warning.main}
                                 sx={{
                                     fontFamily: 'Denton Test',
-                                    fontWeight: {
-                                        xs: '700',
-                                        lg: '660',
-                                    },
+                                    fontWeight: '700',
                                     fontSize: {
                                         xs: '20px',
                                         lg: '28px',
@@ -332,6 +488,10 @@ const DesignProcess: FC<{
                                         xs: '20px',
                                         lg: '34px',
                                     },
+                                    letterSpacing: {
+                                        xs: '-0.2px',
+                                        lg: '-0.28px',
+                                    },
                                 }}
                             >
                                 Client:
@@ -339,9 +499,10 @@ const DesignProcess: FC<{
                             <Typography
                                 color={KL_theme.palette.primary.main}
                                 sx={{
-                                    fontWeight: {
-                                        xs: 'normal',
-                                        lg: '700',
+                                    fontWeight: '700',
+                                    letterSpacing: {
+                                        xs: '-0.28px',
+                                        lg: '-0.32px',
                                     },
                                     lineHeight: {
                                         xs: '16px',
@@ -367,10 +528,7 @@ const DesignProcess: FC<{
                                 color={KL_theme.palette.warning.main}
                                 sx={{
                                     fontFamily: 'Denton Test',
-                                    fontWeight: {
-                                        xs: '700',
-                                        lg: '660',
-                                    },
+                                    fontWeight: '700',
                                     fontSize: {
                                         xs: '20px',
                                         lg: '28px',
@@ -379,6 +537,10 @@ const DesignProcess: FC<{
                                         xs: '20px',
                                         lg: '34px',
                                     },
+                                    letterSpacing: {
+                                        xs: '-0.2px',
+                                        lg: '-0.28px',
+                                    },
                                 }}
                             >
                                 Service Provided:
@@ -386,9 +548,10 @@ const DesignProcess: FC<{
                             <Typography
                                 color={KL_theme.palette.primary.main}
                                 sx={{
-                                    fontWeight: {
-                                        xs: 'normal',
-                                        lg: '700',
+                                    fontWeight: '700',
+                                    letterSpacing: {
+                                        xs: '-0.28px',
+                                        lg: '-0.32px',
                                     },
                                     lineHeight: {
                                         xs: '16px',
@@ -414,10 +577,7 @@ const DesignProcess: FC<{
                                 color={KL_theme.palette.warning.main}
                                 sx={{
                                     fontFamily: 'Denton Test',
-                                    fontWeight: {
-                                        xs: '700',
-                                        lg: '660',
-                                    },
+                                    fontWeight: '700',
                                     fontSize: {
                                         xs: '20px',
                                         lg: '28px',
@@ -426,6 +586,10 @@ const DesignProcess: FC<{
                                         xs: '20px',
                                         lg: '34px',
                                     },
+                                    letterSpacing: {
+                                        xs: '-0.2px',
+                                        lg: '-0.28px',
+                                    },
                                 }}
                             >
                                 Software:
@@ -433,9 +597,10 @@ const DesignProcess: FC<{
                             <Typography
                                 color={KL_theme.palette.primary.main}
                                 sx={{
-                                    fontWeight: {
-                                        xs: 'normal',
-                                        lg: '700',
+                                    fontWeight: '700',
+                                    letterSpacing: {
+                                        xs: '-0.28px',
+                                        lg: '-0.32px',
                                     },
                                     lineHeight: {
                                         xs: '16px',
@@ -464,7 +629,7 @@ const DesignProcess: FC<{
                                 lg: 'absolute',
                             },
                             right: {
-                                lg: '0',
+                                lg: '18%',
                             },
                             bottom: {
                                 lg: '40px',
@@ -494,14 +659,8 @@ const DesignProcess: FC<{
                         <Typography
                             color={KL_theme.palette.primary.main}
                             sx={{
-                                fontWeight: {
-                                    xs: 'normal',
-                                    lg: '700',
-                                },
-                                lineHeight: {
-                                    xs: '16px',
-                                    lg: '20px',
-                                },
+                                fontWeight: 'normal',
+                                lineHeight: '20px',
                             }}
                         >
                             {details?.brief}
@@ -510,16 +669,58 @@ const DesignProcess: FC<{
                 </Box>
             </Box>
             <Box>
-                <Box sx={{}}>
-                    <Box
-                        sx={{
-                            paddingX: {
-                                xs: '8px',
-                                lg: '0',
-                            },
-                        }}
-                    ></Box>
-                </Box>
+                <Typography
+                    sx={{
+                        textAlign: {
+                            xs: 'center',
+                            lg: 'left',
+                        },
+                        padding: {
+                            xs: '36px 0 40px',
+                            lg: '40px 0',
+                        },
+                        fontFamily: 'Denton Test',
+                        fontWeight: '700',
+                        fontSize: {
+                            xs: '32px',
+                            lg: '36px',
+                        },
+                        lineHeight: {
+                            xs: '38px',
+                            lg: '44px',
+                        },
+                        letterSpacing: {
+                            xs: '-0.32px',
+                            lg: '-0.36px',
+                        },
+                    }}
+                    color={KL_theme.palette.secondary.main}
+                >
+                    Design Process
+                </Typography>
+                <ImageList
+                    cols={1}
+                    gap={lessThanLg ? 16 : 24}
+                    variant='quilted'
+                >
+                    {processes.map((img) => (
+                        <ImageListItem
+                            key={img.id}
+                            cols={1}
+                            rows={1}
+                            onClick={handleOpen}
+                        >
+                            <img
+                                src={lessThanLg ? img.url.xs : img.url.lg}
+                                style={{
+                                    width: '100%',
+                                    height: 'auto',
+                                    objectFit: 'cover',
+                                }}
+                            />
+                        </ImageListItem>
+                    ))}
+                </ImageList>
             </Box>
         </Box>
     );
@@ -529,160 +730,199 @@ const Execution: FC<{
     id: number;
     isExpanded: boolean;
     setIsExpanded: React.Dispatch<React.SetStateAction<boolean>>;
-}> = memo(({ id, isExpanded, setIsExpanded }) => {
+    handleOpen: (e: MouseEvent) => void;
+}> = memo(({ id, isExpanded, setIsExpanded, handleOpen }) => {
     const data = SelectedWorksData.find((item) => item.id === id);
+    const details = data?.details;
+    const photos = details?.execution?.photos || [];
     const lessThanLg = useMediaQuery(KL_theme.breakpoints.down('lg'));
     const toggleExpand = () => setIsExpanded(!isExpanded);
     return (
         <Box
             sx={{
                 position: 'relative',
-                width: '100%',
-                height: 'auto',
-                borderRadius: {
-                    xs: '0px 24px',
-                    lg: '0px 32px',
-                },
-                backgroundColor: KL_theme.palette.warning.main,
-                boxShadow: '13px 13px 29.7px 0px rgba(0, 0, 0, 0.26)',
-                padding: {
-                    xs: '27px 40px',
-                    lg: '64px 70px',
-                },
             }}
         >
-            <Typography
-                color={KL_theme.palette.secondary.main}
+            <Box
                 sx={{
-                    fontWeight: 700,
                     position: 'absolute',
                     top: {
-                        xs: '-47px',
-                        lg: '-64px',
+                        xs: '-43px',
+                        lg: '-110px',
                     },
                     left: '50%',
                     transform: 'translateX(-50%)',
-                    textAlign: 'center',
-                    lineHeight: 1.25,
-                    letterSpacing: {
-                        xs: '0.28px',
-                        lg: '0.32px',
-                    },
-                    textShadow: '13px 13px 29.7px rgba(0, 0, 0, 0.26)',
-                }}
-            >{`${isExpanded ? 'Close' : 'Open'} Design Process`}</Typography>
-            <IconButton
-                children={isExpanded ? CloseSvg() : OpenSvg()}
-                onClick={toggleExpand}
-                sx={{
-                    position: 'absolute',
-                    top: '0',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    padding: 0,
-                    width: {
-                        xs: '40px',
-                        lg: '52px',
-                    },
+                    width: '100%',
                     height: {
-                        xs: '40px',
-                        lg: '52px',
+                        xs: '88px',
+                        lg: '160px',
                     },
+                    background: {
+                        xs: 'linear-gradient(0deg, #141414 0%, rgba(238, 229, 216, 0.50) 100%)',
+                        lg: 'linear-gradient(0deg, rgba(20, 20, 20, 0.60) 0%, rgba(238, 229, 216, 0.30) 100%)',
+                    },
+                    zIndex: 0,
                 }}
-            />
+            ></Box>
             <Box
                 sx={{
-                    paddingX: {
-                        xs: '8px',
-                        lg: '0',
+                    position: 'relative',
+                    width: '100%',
+                    height: 'auto',
+                    borderRadius: {
+                        xs: '0px 24px 0 0',
+                        lg: '0px 32px 0 0',
                     },
+                    backgroundColor: KL_theme.palette.warning.main,
+                    boxShadow: '13px 13px 29.7px 0px rgba(0, 0, 0, 0.26)',
+                    // boxShadow: '0 -20px 20px -10px rgba(20, 20, 20, 0.6), 0 -40px 40px -20px rgba(20, 20, 20, 0.3)',
+                    padding: {
+                        xs: '27px 40px',
+                        lg: '64px 70px',
+                    },
+                    zIndex: 1,
                 }}
             >
                 <Typography
                     color={KL_theme.palette.secondary.main}
                     sx={{
-                        textAlign: {
-                            xs: 'center',
-                            lg: 'left',
+                        position: 'absolute',
+                        top: {
+                            xs: '-43px',
+                            lg: '-70px',
                         },
-                        fontFamily: 'Denton Test',
-                        fontWeight: {
-                            xs: '700',
-                            lg: '660',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        fontWeight: 700,
+                        textAlign: 'center',
+                        lineHeight: 1.25,
+                        letterSpacing: {
+                            xs: '0.28px',
+                            lg: '0.32px',
                         },
-                        fontSize: {
-                            xs: '32px',
-                            lg: '36px',
-                        },
-                        marginBottom: {
-                            xs: '40px',
-                            lg: '40px',
-                        },
+                        textShadow: '13px 13px 29.7px rgba(0, 0, 0, 0.26)',
                     }}
-                >
-                    Execution
-                </Typography>
-                <Typography
-                    color={KL_theme.palette.info.main}
+                >{`${
+                    isExpanded ? 'Close' : 'Open'
+                } Design Process`}</Typography>
+                <IconButton
+                    children={isExpanded ? CloseSvg() : OpenSvg()}
+                    onClick={toggleExpand}
                     sx={{
-                        textAlign: 'left',
-                        fontFamily: 'Denton Test',
-                        fontWeight: {
-                            xs: '700',
-                            lg: '660',
-                        },
-                        fontSize: {
-                            xs: '20px',
-                            lg: '28px',
-                        },
-                        lineHeight: {
-                            xs: '20px',
-                            lg: '34px',
-                        },
-                        marginBottom: {
-                            xs: '16px',
-                            lg: '24px',
-                        },
-                    }}
-                >
-                    {data!.details.execution.title}
-                </Typography>
-                <Typography
-                    color={KL_theme.palette.primary.light}
-                    sx={{
-                        textAlign: 'left',
-                        fontWeight: 'normal',
-                        fontSize: {
-                            xs: '16px',
-                            lg: '14px',
-                        },
+                        position: 'absolute',
+                        top: '0',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        padding: 0,
                         width: {
-                            xs: '100%',
-                            lg: '40%',
+                            xs: '40px',
+                            lg: '52px',
                         },
-                        marginBottom: {
-                            xs: '24px',
-                            lg: '64px',
+                        height: {
+                            xs: '40px',
+                            lg: '52px',
                         },
                     }}
+                />
+                <Box
+                    sx={{
+                        paddingX: {
+                            xs: '8px',
+                            lg: '0',
+                        },
+                        zIndex: 1,
+                    }}
                 >
-                    {data!.details.execution.desc}
-                </Typography>
+                    <Typography
+                        color={KL_theme.palette.secondary.main}
+                        sx={{
+                            textAlign: {
+                                xs: 'center',
+                                lg: 'left',
+                            },
+                            fontFamily: 'Denton Test',
+                            fontWeight: {
+                                xs: '700',
+                                lg: '660',
+                            },
+                            fontSize: {
+                                xs: '32px',
+                                lg: '36px',
+                            },
+                            marginBottom: {
+                                xs: '40px',
+                                lg: '40px',
+                            },
+                        }}
+                    >
+                        Execution
+                    </Typography>
+                    <Typography
+                        color={KL_theme.palette.info.main}
+                        sx={{
+                            textAlign: 'left',
+                            fontFamily: 'Denton Test',
+                            fontWeight: {
+                                xs: '700',
+                                lg: '660',
+                            },
+                            fontSize: {
+                                xs: '20px',
+                                lg: '28px',
+                            },
+                            lineHeight: {
+                                xs: '20px',
+                                lg: '34px',
+                            },
+                            marginBottom: {
+                                xs: '16px',
+                                lg: '24px',
+                            },
+                        }}
+                    >
+                        {data!.details.execution.title}
+                    </Typography>
+                    <Typography
+                        color={KL_theme.palette.primary.light}
+                        sx={{
+                            textAlign: 'left',
+                            fontWeight: 'normal',
+                            fontSize: {
+                                xs: '16px',
+                                lg: '14px',
+                            },
+                            width: {
+                                xs: '100%',
+                                lg: '40%',
+                            },
+                            marginBottom: {
+                                xs: '24px',
+                                lg: '64px',
+                            },
+                        }}
+                    >
+                        {data!.details.execution.desc}
+                    </Typography>
+                </Box>
+                <ImageList
+                    cols={1}
+                    gap={lessThanLg ? 16 : 24}
+                    variant='quilted'
+                >
+                    {photos.map((img) => (
+                        <ImageListItem key={img.id} onClick={handleOpen}>
+                            <img
+                                src={lessThanLg ? img.url.xs : img.url.lg}
+                                style={{
+                                    width: '100%',
+                                    height: 'auto',
+                                    objectFit: 'cover',
+                                }}
+                            />
+                        </ImageListItem>
+                    ))}
+                </ImageList>
             </Box>
-            <ImageList cols={1} gap={4} variant='quilted'>
-                {data!.details.execution.photos.map((img) => (
-                    <ImageListItem key={img.id}>
-                        <img
-                            src={lessThanLg ? img.url.xs : img.url.lg}
-                            style={{
-                                width: '100%',
-                                height: 'auto',
-                                objectFit: 'cover',
-                            }}
-                        />
-                    </ImageListItem>
-                ))}
-            </ImageList>
         </Box>
     );
 });
