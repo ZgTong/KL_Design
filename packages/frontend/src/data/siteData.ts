@@ -66,11 +66,11 @@ const SelectedWorksData = [
         desc: 'Design / Photography',
         name: 'design',
         entryImg: {
-            xs: '/images/selected_works/main_1.png',
-            lg: '/images/selected_works/main_lg_1.png',
+            xs: '/images/selected_works/main_1.jpg',
+            lg: '/images/selected_works/main_lg_1.jpg',
         },
         details: {
-            title: 'Promotion Poster  Series',
+            title: 'Promotion Poster Series',
             desc: 'Shark Fin',
             date: 'August 2023',
             client: 'Shark Fin Keysborough',
@@ -159,25 +159,25 @@ Notably, the promotional poster series for Shark Fin has surpassed profit projec
         desc: 'Website Design',
         name: 'website',
         entryImg: {
-            xs: '/images/selected_works/main_2.png',
-            lg: '/images/selected_works/main_lg_2.png',
+            xs: '/images/selected_works/main_2.jpg',
+            lg: '/images/selected_works/main_lg_2.jpg',
         },
         details: {
             title: 'Responsive Website',
-            desc: 'Website Design',
-            date: 'August 2023',
-            client: 'Shark Fin Keysborough',
-            service: 'Poster Design / Photography',
-            software: 'Lightroom /  Photoshop / Illustrator',
-            brief: 'Continue the monthly promotion series created for Shark Fin, conduct a photoshoot and create a promotion poster for the assigned Japanese whiskey in A5 and A6 size.',
+            desc: 'Jo & Jim Services Group',
+            date: 'November 2023',
+            client: 'Jo & Jim Service Group',
+            service: 'Website Design',
+            software: 'Figma / Illustrator / Photoshop',
+            brief: "Jo & Jim Service Group requires a user-friendly, single-page website catering to aged care services and elderly clients. The website should feature intuitive navigation, be fully responsive, and offer seamless switching between English and Chinese, effectively showcasing their services and contact details.",
             processes: [
                 {
                     id: 1,
                     title: '',
                     desc: '',
                     url: {
-                        xs: '/images/selected_works/work_1/mobile/process/1.jpg',
-                        lg: '/images/selected_works/work_1/desktop/process/1.jpg',
+                        xs: '/images/selected_works/work_2/mobile/process/1.jpg',
+                        lg: '/images/selected_works/work_2/desktop/process/1.jpg',
                     },
                 },
                 {
@@ -185,8 +185,8 @@ Notably, the promotional poster series for Shark Fin has surpassed profit projec
                     title: '',
                     desc: '',
                     url: {
-                        xs: '/images/selected_works/work_1/mobile/process/2.jpg',
-                        lg: '/images/selected_works/work_1/desktop/process/2.jpg',
+                        xs: '/images/selected_works/work_2/mobile/process/2.jpg',
+                        lg: '/images/selected_works/work_2/desktop/process/2.jpg',
                     },
                 },
                 {
@@ -194,8 +194,8 @@ Notably, the promotional poster series for Shark Fin has surpassed profit projec
                     title: '',
                     desc: '',
                     url: {
-                        xs: '/images/selected_works/work_1/mobile/process/3.jpg',
-                        lg: '/images/selected_works/work_1/desktop/process/3.jpg',
+                        xs: '/images/selected_works/work_2/mobile/process/3.jpg',
+                        lg: '/images/selected_works/work_2/desktop/process/3.jpg',
                     },
                 },
                 {
@@ -203,10 +203,19 @@ Notably, the promotional poster series for Shark Fin has surpassed profit projec
                     title: '',
                     desc: '',
                     url: {
-                        xs: '/images/selected_works/work_1/mobile/process/4.jpg',
-                        lg: '/images/selected_works/work_1/desktop/process/4.jpg',
+                        xs: '/images/selected_works/work_2/mobile/process/4.jpg',
+                        lg: '/images/selected_works/work_2/desktop/process/4.jpg',
                     },
                 },
+                {
+                    id: 5,
+                    title: '',
+                    desc: '',
+                    url: {
+                        xs: '/images/selected_works/work_2/mobile/process/5.jpg',
+                        lg: '/images/selected_works/work_2/desktop/process/5.jpg',
+                    },
+                }
             ],
             execution: {
                 title: 'Functional Poster',
@@ -217,10 +226,45 @@ Notably, the promotional poster series for Shark Fin has surpassed profit projec
                     {
                         id: 1,
                         url: {
-                            xs: '/images/selected_works/work_1/mobile/execution/1.jpg',
-                            lg: '/images/selected_works/work_1/desktop/execution/1.jpg',
+                            xs: '/images/selected_works/work_2/mobile/execution/1.jpg',
+                            lg: '/images/selected_works/work_2/desktop/execution/1.jpg',
                         },
                     },
+                    {
+                        id: 2,
+                        url: {
+                            xs: '/images/selected_works/work_2/mobile/execution/2.jpg',
+                            lg: '/images/selected_works/work_2/desktop/execution/2.jpg',
+                        },
+                    },
+                    {
+                        id: 3,
+                        url: {
+                            xs: '/images/selected_works/work_2/mobile/execution/3.jpg',
+                            lg: '/images/selected_works/work_2/desktop/execution/3.jpg',
+                        },
+                    },
+                    {
+                        id: 4,
+                        url: {
+                            xs: '/images/selected_works/work_2/mobile/execution/4.jpg',
+                            lg: '/images/selected_works/work_2/desktop/execution/4.jpg',
+                        },
+                    },
+                    {
+                        id: 5,
+                        url: {
+                            xs: '/images/selected_works/work_2/mobile/execution/5.jpg',
+                            lg: '/images/selected_works/work_2/desktop/execution/5.jpg',
+                        },
+                    },
+                    {
+                        id: 6,
+                        url: {
+                            xs: '/images/selected_works/work_2/mobile/execution/6.jpg',
+                            lg: '/images/selected_works/work_2/desktop/execution/6.jpg',
+                        },
+                    }
                 ],
             },
         },
@@ -231,25 +275,25 @@ Notably, the promotional poster series for Shark Fin has surpassed profit projec
         desc: 'Branding',
         name: 'branding',
         entryImg: {
-            xs: '/images/selected_works/main_3.png',
-            lg: '/images/selected_works/main_lg_3.png',
+            xs: '/images/selected_works/main_3.jpg',
+            lg: '/images/selected_works/main_lg_3.jpg',
         },
         details: {
             title: 'Brand Guidelines',
             desc: 'Branding',
-            date: 'August 2023',
-            client: 'Shark Fin Keysborough',
-            service: 'Poster Design / Photography',
-            software: 'Lightroom /  Photoshop / Illustrator',
-            brief: 'Continue the monthly promotion series created for Shark Fin, conduct a photoshoot and create a promotion poster for the assigned Japanese whiskey in A5 and A6 size.',
+            date: 'February 2024',
+            client: 'MMT Auto Group',
+            service: 'Branding',
+            software: 'Figma / Illustrator / Photoshop',
+            brief: "Conduct thorough background and market research, and develop an extensive brand guideline for MMT Auto Group. According to the client's specifications, the primary colour must be blue, and the existing logo mark is also being utilised.",
             processes: [
                 {
                     id: 1,
                     title: '',
                     desc: '',
                     url: {
-                        xs: '/images/selected_works/work_1/mobile/process/1.jpg',
-                        lg: '/images/selected_works/work_1/desktop/process/1.jpg',
+                        xs: '/images/selected_works/work_3/mobile/process/1.jpg',
+                        lg: '/images/selected_works/work_3/desktop/process/1.jpg',
                     },
                 },
                 {
@@ -257,8 +301,8 @@ Notably, the promotional poster series for Shark Fin has surpassed profit projec
                     title: '',
                     desc: '',
                     url: {
-                        xs: '/images/selected_works/work_1/mobile/process/2.jpg',
-                        lg: '/images/selected_works/work_1/desktop/process/2.jpg',
+                        xs: '/images/selected_works/work_3/mobile/process/2.jpg',
+                        lg: '/images/selected_works/work_3/desktop/process/2.jpg',
                     },
                 },
                 {
@@ -266,8 +310,8 @@ Notably, the promotional poster series for Shark Fin has surpassed profit projec
                     title: '',
                     desc: '',
                     url: {
-                        xs: '/images/selected_works/work_1/mobile/process/3.jpg',
-                        lg: '/images/selected_works/work_1/desktop/process/3.jpg',
+                        xs: '/images/selected_works/work_3/mobile/process/3.jpg',
+                        lg: '/images/selected_works/work_3/desktop/process/3.jpg',
                     },
                 },
                 {
@@ -275,8 +319,8 @@ Notably, the promotional poster series for Shark Fin has surpassed profit projec
                     title: '',
                     desc: '',
                     url: {
-                        xs: '/images/selected_works/work_1/mobile/process/4.jpg',
-                        lg: '/images/selected_works/work_1/desktop/process/4.jpg',
+                        xs: '/images/selected_works/work_3/mobile/process/4.jpg',
+                        lg: '/images/selected_works/work_3/desktop/process/4.jpg',
                     },
                 },
             ],
@@ -289,8 +333,71 @@ Notably, the promotional poster series for Shark Fin has surpassed profit projec
                     {
                         id: 1,
                         url: {
-                            xs: '/images/selected_works/work_1/mobile/execution/1.jpg',
-                            lg: '/images/selected_works/work_1/desktop/execution/1.jpg',
+                            xs: '/images/selected_works/work_3/mobile/execution/1.jpg',
+                            lg: '/images/selected_works/work_3/desktop/execution/1.jpg',
+                        },
+                    },
+                    {
+                        id: 2,
+                        url: {
+                            xs: '/images/selected_works/work_3/mobile/execution/2.jpg',
+                            lg: '/images/selected_works/work_3/desktop/execution/2.jpg',
+                        },
+                    },
+                    {
+                        id: 3,
+                        url: {
+                            xs: '/images/selected_works/work_3/mobile/execution/3.jpg',
+                            lg: '/images/selected_works/work_3/desktop/execution/3.jpg',
+                        },
+                    },
+                    {
+                        id: 4,
+                        url: {
+                            xs: '/images/selected_works/work_3/mobile/execution/4.jpg',
+                            lg: '/images/selected_works/work_3/desktop/execution/4.jpg',
+                        },
+                    },
+                    {
+                        id: 5,
+                        url: {
+                            xs: '/images/selected_works/work_3/mobile/execution/5.jpg',
+                            lg: '/images/selected_works/work_3/desktop/execution/5.jpg',
+                        },
+                    },
+                    {
+                        id: 6,
+                        url: {
+                            xs: '/images/selected_works/work_3/mobile/execution/6.jpg',
+                            lg: '/images/selected_works/work_3/desktop/execution/6.jpg',
+                        },
+                    },
+                    {
+                        id: 7,
+                        url: {
+                            xs: '/images/selected_works/work_3/mobile/execution/7.jpg',
+                            lg: '/images/selected_works/work_3/desktop/execution/7.jpg',
+                        },
+                    },
+                    {
+                        id: 8,
+                        url: {
+                            xs: '/images/selected_works/work_3/mobile/execution/8.jpg',
+                            lg: '/images/selected_works/work_3/desktop/execution/8.jpg',
+                        },
+                    },
+                    {
+                        id: 9,
+                        url: {
+                            xs: '/images/selected_works/work_3/mobile/execution/9.jpg',
+                            lg: '/images/selected_works/work_3/desktop/execution/9.jpg',
+                        },
+                    },
+                    {
+                        id: 10,
+                        url: {
+                            xs: '/images/selected_works/work_3/mobile/execution/10.jpg',
+                            lg: '/images/selected_works/work_3/desktop/execution/10.jpg',
                         },
                     },
                 ],
@@ -303,25 +410,25 @@ Notably, the promotional poster series for Shark Fin has surpassed profit projec
         desc: 'Design',
         name: 'cards',
         entryImg: {
-            xs: '/images/selected_works/main_4.png',
-            lg: '/images/selected_works/main_lg_4.png',
+            xs: '/images/selected_works/main_4.jpg',
+            lg: '/images/selected_works/main_lg_4.jpg',
         },
         details: {
             title: "Jo & Jim's",
             desc: 'Business Cards',
-            date: 'August 2023',
-            client: 'Shark Fin Keysborough',
-            service: 'Poster Design / Photography',
-            software: 'Lightroom /  Photoshop / Illustrator',
-            brief: 'Continue the monthly promotion series created for Shark Fin, conduct a photoshoot and create a promotion poster for the assigned Japanese whiskey in A5 and A6 size.',
+            date: 'March 2023',
+            client: 'Jo & Jim Service Group',
+            service: 'Design',
+            software: 'Photoshop / Illustrator',
+            brief: 'Jo & Jim Service Group requires a business card design for its founders. The front should be black and the back white, reflecting their dual focus on cleaning and construction.',
             processes: [
                 {
                     id: 1,
                     title: '',
                     desc: '',
                     url: {
-                        xs: '/images/selected_works/work_1/mobile/process/1.jpg',
-                        lg: '/images/selected_works/work_1/desktop/process/1.jpg',
+                        xs: '/images/selected_works/work_4/mobile/process/1.jpg',
+                        lg: '/images/selected_works/work_4/desktop/process/1.jpg',
                     },
                 },
                 {
@@ -329,8 +436,8 @@ Notably, the promotional poster series for Shark Fin has surpassed profit projec
                     title: '',
                     desc: '',
                     url: {
-                        xs: '/images/selected_works/work_1/mobile/process/2.jpg',
-                        lg: '/images/selected_works/work_1/desktop/process/2.jpg',
+                        xs: '/images/selected_works/work_4/mobile/process/2.jpg',
+                        lg: '/images/selected_works/work_4/desktop/process/2.jpg',
                     },
                 },
                 {
@@ -338,31 +445,51 @@ Notably, the promotional poster series for Shark Fin has surpassed profit projec
                     title: '',
                     desc: '',
                     url: {
-                        xs: '/images/selected_works/work_1/mobile/process/3.jpg',
-                        lg: '/images/selected_works/work_1/desktop/process/3.jpg',
-                    },
-                },
-                {
-                    id: 4,
-                    title: '',
-                    desc: '',
-                    url: {
-                        xs: '/images/selected_works/work_1/mobile/process/4.jpg',
-                        lg: '/images/selected_works/work_1/desktop/process/4.jpg',
+                        xs: '/images/selected_works/work_4/mobile/process/3.jpg',
+                        lg: '/images/selected_works/work_4/desktop/process/3.jpg',
                     },
                 },
             ],
             execution: {
-                title: 'Functional Poster',
-                desc: `The final image was meticulously crafted to deliver a captivating and cool visual experience for customers. Additionally, the poster is designed to be versatile and functional across different sizes. 
-
-Notably, the promotional poster series for Shark Fin has surpassed profit projections.`,
+                title: 'Business Card Specifications',
+                desc: `Paper options and special enhancement:
+360gsm Silk Artboard
+Matte Laminate 2 sides
+Spot UV 1 side (Logo)`,
                 photos: [
                     {
                         id: 1,
                         url: {
-                            xs: '/images/selected_works/work_1/mobile/execution/1.jpg',
-                            lg: '/images/selected_works/work_1/desktop/execution/1.jpg',
+                            xs: '/images/selected_works/work_4/mobile/execution/1.jpg',
+                            lg: '/images/selected_works/work_4/desktop/execution/1.jpg',
+                        },
+                    },
+                    {
+                        id: 2,
+                        url: {
+                            xs: '/images/selected_works/work_4/mobile/execution/2.jpg',
+                            lg: '/images/selected_works/work_4/desktop/execution/2.jpg',
+                        },
+                    },
+                    {
+                        id: 3,
+                        url: {
+                            xs: '/images/selected_works/work_4/mobile/execution/3.jpg',
+                            lg: '/images/selected_works/work_4/desktop/execution/3.jpg',
+                        },
+                    },
+                    {
+                        id: 4,
+                        url: {
+                            xs: '/images/selected_works/work_4/mobile/execution/4.jpg',
+                            lg: '/images/selected_works/work_4/desktop/execution/4.jpg',
+                        },
+                    },
+                    {
+                        id: 5,
+                        url: {
+                            xs: '/images/selected_works/work_4/mobile/execution/5.jpg',
+                            lg: '/images/selected_works/work_4/desktop/execution/5.jpg',
                         },
                     },
                 ],

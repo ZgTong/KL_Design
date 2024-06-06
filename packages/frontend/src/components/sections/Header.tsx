@@ -105,7 +105,7 @@ const Header: FC = memo(() => {
 
     const intersectionHandler = useCallback((section: SectionId | null) => {        
         section && dispatch({ type: 'app/setActiveHeaderTab', payload: section });
-        console.log("section", section, activeHeaderTab);
+        // console.log("section", section, activeHeaderTab);
     }, []);
 
     useNavObserver(

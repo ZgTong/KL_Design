@@ -14,7 +14,7 @@ const Landing: FC = memo(() => {
     const dispatch = useAppDispatch();
     const router = useRouter();
     const handleClick = (e: MouseEvent, id: number, route: string) => {
-        console.log('id', id);
+        // console.log('id', id);
         if(id !== 4) dispatch({ type: 'app/setSelectedWorksIndex', payload: id - 1 });
         router.push(route);
     };
