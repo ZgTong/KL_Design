@@ -1,5 +1,5 @@
 'use client';
-import { FC, memo, useEffect } from 'react';
+import { FC, memo, useEffect, Suspense, useState } from 'react';
 import { Box, ThemeProvider } from '@mui/material';
 import theme from '@root/theme';
 import { useAppDispatch } from '@lib/hooks';
@@ -10,13 +10,21 @@ import SelectedWorks from '@components/sections/SelectedWorks';
 import Photography from '@components/sections/Photography';
 import Contact from '@components/sections/Contact';
 import { initialAppState } from '@lib/features/appSlice';
+import Loading from '@app/loading';
 
-
-const Home: FC = memo(() => {
+const Home: FC = memo(({}, searchParams) => {
     const dispatch = useAppDispatch();
     const KL_theme = theme();
+    const [isLoaded, setIsLoaded] = useState(false);
+    const handleLoad = () => {
+        setIsLoaded(true);
+    };
     useEffect(() => {
-        dispatch({ type: 'app/setBackgroundImageMobile', payload: initialAppState.backgroundImageMobile });
+        const timer = setTimeout(handleLoad, 0);
+        dispatch({
+            type: 'app/setBackgroundImageMobile',
+            payload: initialAppState.backgroundImageMobile,
+        });
         dispatch({
             type: 'app/setBackgroundImageDesktop',
             payload: initialAppState.backgroundImageDesktop,
@@ -25,23 +33,37 @@ const Home: FC = memo(() => {
             type: 'app/setBackgroundColor',
             payload: KL_theme.palette.primary.main,
         });
+
+        window.addEventListener('load', handleLoad);
+
+        return () => {
+            clearTimeout(timer);
+            window.removeEventListener('load', handleLoad);
+        };
     }, []);
     return (
         <ThemeProvider theme={KL_theme}>
             <BackgroundSetter />
-            <Box
-                sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    flexDirection: 'column',
-                }}
-            >
-                <Landing />
-                <About hrefId='about'/>
-                <SelectedWorks hrefId='works' />
-                <Photography hrefId='photography' />
-                <Contact hrefId='contact' />
-            </Box>
+            {isLoaded ? (
+                <Suspense key={searchParams.q} fallback={<Loading />}>
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            flexDirection: 'column',
+                            width: '100%',
+                        }}
+                    >
+                        <Landing />
+                        <About hrefId='about' />
+                        <SelectedWorks hrefId='works' />
+                        <Photography hrefId='photography' />
+                        <Contact hrefId='contact' />
+                    </Box>
+                </Suspense>
+            ) : (
+                <Loading />
+            )}
         </ThemeProvider>
     );
 });

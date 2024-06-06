@@ -197,110 +197,112 @@ const Page: FC = memo(() => {
         return () => clearTimeout(timeout);
     }, [curWorkIndex]);
     return (
-        <Suspense fallback={<div>Loading...</div>}>
-            <Fade in={show} timeout={1000} key={curWorkIndex}>
-                <Box>
-                    <WorkPage handleOpen={handleOpen} />
-                    <DetailsContainer
-                        id={curWorkIndex + 1}
-                        handleOpen={handleOpen}
-                    />
+        <Fade in={show} timeout={1000} key={curWorkIndex}>
+            <Box sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+            }}>
+                <WorkPage handleOpen={handleOpen} />
+                <DetailsContainer
+                    id={curWorkIndex + 1}
+                    handleOpen={handleOpen}
+                />
+                <Box
+                    sx={{
+                        height: {
+                            xs: '191px',
+                            lg: '274px',
+                        },
+                        width: '100%',
+                        backgroundImage: {
+                            xs: `url(/images/bg/mobile_work_page_bg_bottom.png)`,
+                            lg: `url(/images/bg/desktop_work_page_bg_bottom.png)`,
+                        },
+                        backgroundSize: '100% 100%',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundPosition: '0% 0%',
+                        padding: {
+                            xs: '32px 30px 72px',
+                            lg: '52px 70px 104px',
+                        },
+                    }}
+                >
                     <Box
                         sx={{
-                            height: {
-                                xs: '191px',
-                                lg: '274px',
-                            },
                             width: '100%',
-                            backgroundImage: {
-                                xs: `url(/images/bg/mobile_work_page_bg_bottom.png)`,
-                                lg: `url(/images/bg/desktop_work_page_bg_bottom.png)`,
-                            },
-                            backgroundSize: '100% 100%',
-                            backgroundRepeat: 'no-repeat',
-                            backgroundPosition: '0% 0%',
-                            padding: {
-                                xs: '32px 30px 72px',
-                                lg: '52px 70px 104px',
-                            },
+                            height: '100%',
+                            borderBottomColor: '#272727',
+                            borderBottomWidth: '1px',
+                            borderBottomStyle: 'solid',
+                            textAlign: 'center',
                         }}
                     >
-                        <Box
+                        <Typography
                             sx={{
-                                width: '100%',
-                                height: '100%',
-                                borderBottomColor: '#272727',
-                                borderBottomWidth: '1px',
-                                borderBottomStyle: 'solid',
-                                textAlign: 'center',
+                                fontFamily: {
+                                    lg: 'Denton Test',
+                                },
+                                fontWeight: '700',
+                                fontSize: {
+                                    xs: '14px',
+                                    lg: '16px',
+                                },
+                                lineHeight: {
+                                    xs: '16px',
+                                    lg: '20px',
+                                },
+                                letterSpacing: {
+                                    xs: '0.28px',
+                                    lg: '0.32px',
+                                },
                             }}
+                            color={KL_theme.palette.primary.light}
                         >
-                            <Typography
-                                sx={{
-                                    fontFamily: {
-                                        lg: 'Denton Test',
-                                    },
-                                    fontWeight: '700',
-                                    fontSize: {
-                                        xs: '14px',
-                                        lg: '16px',
-                                    },
-                                    lineHeight: {
-                                        xs: '16px',
-                                        lg: '20px',
-                                    },
-                                    letterSpacing: {
-                                        xs: '0.28px',
-                                        lg: '0.32px',
-                                    },
-                                }}
-                                color={KL_theme.palette.primary.light}
-                            >
-                                Next Client Work
-                            </Typography>
-                            <Typography
-                                sx={{
-                                    fontFamily: 'Denton Test',
-                                    fontWeight: '660',
-                                    fontSize: {
-                                        xs: '32px',
-                                        lg: '36px',
-                                    },
-                                    lineHeight: {
-                                        xs: '38px',
-                                        lg: '44px',
-                                    },
-                                    letterSpacing: {
-                                        xs: '-0.32px',
-                                        lg: '-0.36px',
-                                    },
-                                }}
-                                color={KL_theme.palette.secondary.dark}
-                            >
-                                {nextWorkTitle}
-                            </Typography>
-                        </Box>
-                    </Box>
-                    <Backdrop
-                        open={open}
-                        onClick={handleClose}
-                        sx={{
-                            backgroundColor: '#000',
-                            zIndex: (theme) => theme.zIndex.drawer + 1,
-                        }}
-                    >
-                        <img
-                            src={curChildPhoto}
-                            style={{
-                                objectFit: 'contain',
-                                width: '100%',
-                                height: '100%',
+                            Next Client Work
+                        </Typography>
+                        <Typography
+                            sx={{
+                                fontFamily: 'Denton Test',
+                                fontWeight: '660',
+                                fontSize: {
+                                    xs: '32px',
+                                    lg: '36px',
+                                },
+                                lineHeight: {
+                                    xs: '38px',
+                                    lg: '44px',
+                                },
+                                letterSpacing: {
+                                    xs: '-0.32px',
+                                    lg: '-0.36px',
+                                },
                             }}
-                        />
-                    </Backdrop>
+                            color={KL_theme.palette.secondary.dark}
+                        >
+                            {nextWorkTitle}
+                        </Typography>
+                    </Box>
                 </Box>
-            </Fade>
-        </Suspense>
+                <Backdrop
+                    open={open}
+                    onClick={handleClose}
+                    sx={{
+                        backgroundColor: '#000',
+                        zIndex: (theme) => theme.zIndex.drawer + 1,
+                    }}
+                >
+                    <img
+                        src={curChildPhoto}
+                        style={{
+                            objectFit: 'contain',
+                            width: '100%',
+                            height: '100%',
+                        }}
+                    />
+                </Backdrop>
+            </Box>
+        </Fade>
     );
 });
 
