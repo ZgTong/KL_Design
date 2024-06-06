@@ -12,7 +12,7 @@ const dm_sans = DM_Sans({
 });
 // const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
-    title: 'KL DESIGN',
+    title: 'KL Design',
     description: "KephaL's Design Portfolio",
     generator: 'Next.js',
     applicationName: 'KL DESIGN',

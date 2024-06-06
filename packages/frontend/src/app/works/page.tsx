@@ -7,8 +7,6 @@ import {
     useEffect,
     useRef,
     MouseEvent,
-    useImperativeHandle,
-    forwardRef,
 } from 'react';
 import {
     Box,
