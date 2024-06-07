@@ -28,6 +28,7 @@ const Page: FC = memo(() => {
         const timeout = setTimeout(() => {
             setShow(true);
         }, 0);
+        return () => clearTimeout(timeout);
     }, [curPhotoIndex]);
     const handleOpen = (e: MouseEvent) => {
         const target = e.target as HTMLImageElement;
