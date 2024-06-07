@@ -855,6 +855,7 @@ const Execution: FC<{
                             xs: '40px',
                             lg: '52px',
                         },
+                        zIndex: 2,
                     }}
                 />
                 <Box

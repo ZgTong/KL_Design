@@ -10,17 +10,11 @@ import SelectedWorks from '@components/sections/SelectedWorks';
 import Photography from '@components/sections/Photography';
 import Contact from '@components/sections/Contact';
 import { initialAppState } from '@lib/features/appSlice';
-import Loading from '@app/loading';
 
 const Home: FC = memo(({}, searchParams) => {
     const dispatch = useAppDispatch();
     const KL_theme = theme();
-    const [isLoaded, setIsLoaded] = useState(false);
-    const handleLoad = () => {
-        setIsLoaded(true);
-    };
     useEffect(() => {
-        const timer = setTimeout(handleLoad, 0);
         dispatch({
             type: 'app/setBackgroundImageMobile',
             payload: initialAppState.backgroundImageMobile,
@@ -33,37 +27,24 @@ const Home: FC = memo(({}, searchParams) => {
             type: 'app/setBackgroundColor',
             payload: KL_theme.palette.primary.main,
         });
-
-        window.addEventListener('load', handleLoad);
-
-        return () => {
-            clearTimeout(timer);
-            window.removeEventListener('load', handleLoad);
-        };
     }, []);
     return (
         <ThemeProvider theme={KL_theme}>
             <BackgroundSetter />
-            {isLoaded ? (
-                <Suspense key={searchParams.q} fallback={<Loading />}>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            flexDirection: 'column',
-                            width: '100%',
-                        }}
-                    >
-                        <Landing />
-                        <About hrefId='about' />
-                        <SelectedWorks hrefId='works' />
-                        <Photography hrefId='photography' />
-                        <Contact hrefId='contact' />
-                    </Box>
-                </Suspense>
-            ) : (
-                <Loading />
-            )}
+            <Box
+                sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    flexDirection: 'column',
+                    width: '100%',
+                }}
+            >
+                <Landing />
+                <About hrefId='about' />
+                <SelectedWorks hrefId='works' />
+                <Photography hrefId='photography' />
+                <Contact hrefId='contact' />
+            </Box>
         </ThemeProvider>
     );
 });

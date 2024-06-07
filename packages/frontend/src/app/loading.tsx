@@ -8,6 +8,9 @@ const Loading: FC = memo(() => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 height: '100vh',
+                backgroundSize: '100% auto',
+                backgroundPosition: 'top left',
+                backgroundRepeat: 'no-repeat',
                 zIndex: 100000,
             }}
         >

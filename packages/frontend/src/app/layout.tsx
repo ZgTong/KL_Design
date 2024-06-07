@@ -3,6 +3,7 @@ import { DM_Sans } from 'next/font/google';
 import StoreProvider from '@app/StoreProvider';
 import Header from '@components/sections/Header';
 import Footer from '@components/sections/Footer';
+import ClientHosting from '@components/widgets/ClientHosting';
 import '@src/globalStyles.scss';
 
 const dm_sans = DM_Sans({
@@ -40,11 +41,11 @@ export default function RootLayout({
         <StoreProvider>
             <html lang='en-US' className={dm_sans.className} id='home'>
                 <body id='app'>
-                    <Header />
-                    <main>
-                        {children}
-                    </main>
-                    <Footer/>
+                    <ClientHosting>
+                        <Header />
+                        <main>{children}</main>
+                        <Footer />
+                    </ClientHosting>
                 </body>
             </html>
         </StoreProvider>
