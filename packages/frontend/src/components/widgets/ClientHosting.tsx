@@ -4,18 +4,17 @@ import { Box, Fade } from '@mui/material';
 import Loading from '@app/loading';
 const ClientOnly: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [isLoaded, setIsLoaded] = useState(false);
+    const handleLoad = () => setIsLoaded(true);
     useEffect(() => {
-        const handleLoad = () => setIsLoaded(true);
         window.addEventListener('load', handleLoad);
         return () => window.removeEventListener('load', handleLoad);
     }, []);
-    if (!isLoaded) {
-        return <Loading />;
-    }
-    return (
-        <Fade in={isLoaded} timeout={1500} key={"topFade"}>
+    return isLoaded ? (
+        <Fade in={isLoaded} timeout={1500} key={'topFade'}>
             <Box>{children}</Box>
         </Fade>
+    ) : (
+        <Loading />
     );
 };
 
